@@ -97,7 +97,7 @@ public class Practica1{
 					fin = true;
 					break;
 				default:
-					System.out.println("OPCION NO VALIDA, INTENTELO DE NUEVO.");
+					System.out.println("OPCION NO VALIDA, INTENTELO DE NUEVO.");break;
 			}
 			
 			
