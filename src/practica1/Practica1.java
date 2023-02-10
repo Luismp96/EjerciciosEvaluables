@@ -10,9 +10,13 @@ public class Practica1{
 		int [] edades = new int[20];
 		String[] localidades = new String[20];
 		
-		int opcion,guardados,edadAux,filtroBusqueda,posicionNombre,posicionEdad,posicionLocalidad,edadABuscar;
-		String nombreAux,localidadAux,nombreABuscar,localidadABuscar;
+		
+		int opcion,guardados,edadAux,filtroBusqueda,posicionEdad,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados;
+		String nombreAux,localidadAux,nombreABuscar,localidadABuscar,nombreAModificar,personaAEliminar;
 		boolean fin=false;
+		boolean finNombres;
+		boolean finPersonas = false;
+		int i=0;
 		
 		Scanner entrada = new Scanner(System.in);
 		
@@ -60,14 +64,20 @@ public class Practica1{
 							
 							System.out.println("Nombre a buscar");
 							nombreABuscar = entrada.nextLine();
+							finNombres = false;
+							
 							if (nombres[0] != null) {
+								
 								posicionNombre = Funcionalidades.buscarXNombre(nombreABuscar,nombres);
 								
-								if (posicionNombre != -1) {
-									System.out.println("La edad de " + nombreABuscar + " es de " + edades[posicionNombre] + " y vive en " + localidades[posicionNombre]);
+								if (posicionNombre == -1) {
+									System.out.println("No hay ninguna persona que se llame " + nombreABuscar + ".");
+									
 								}else {
-									System.out.println("No hay ninguna persona con ese nombre.");
+									System.out.println(nombreABuscar + " tiene " + edades[posicionNombre] + " años y vive en " + localidades[posicionNombre]);
 								}
+								
+							
 							}else {
 								System.out.println("No hay información de ninguna persona.");
 							}
@@ -85,7 +95,7 @@ public class Practica1{
 								if (posicionEdad != -1) {
 									System.out.println("La persona que tiene " + edadABuscar + " años es " + nombres[posicionEdad] + " y vive en " + localidades[posicionEdad]);
 								}else {
-									System.out.println("No hay ninguna persona con esa edad.");
+									System.out.println("No hay ninguna persona con " + edadABuscar + " años.");
 								}
 							}else {
 								System.out.println("No hay información de ninguna persona.");
@@ -103,7 +113,7 @@ public class Practica1{
 								if (posicionLocalidad != -1) {
 									System.out.println("En " + localidadABuscar + " vive " + nombres[posicionLocalidad] + " y tiene " + edades[posicionLocalidad] + " años.");
 								}else {
-									System.out.println("No hay ninguna persona con esa edad.");
+									System.out.println("No hay ninguna persona que viva en " + localidadABuscar +".");
 								}
 							}else {
 								System.out.println("No hay información de ninguna persona.");
@@ -117,12 +127,78 @@ public class Practica1{
 					
 					break;
 				case 3:
+					System.out.println("¿Que persona desea modificar?");
+						
+					nombreAModificar = entrada.nextLine();
 					
+					posicionNombre = Funcionalidades.buscarXNombre(nombreAModificar, nombres);
+					
+					if (posicionNombre != -1) {
+						System.out.println("Nombre encontrado... ¿Que desea modificar?");
+						System.out.println("1 - EDAD");
+						System.out.println("2 - LOCALIDAD");
+						System.out.println("3 - AMBAS");
+						
+						filtroBusqueda = entrada.nextInt();
+						
+						switch (filtroBusqueda) {
+						case 1:
+							System.out.println("Introduce nueva Edad: ");
+							edades[posicionNombre] = entrada.nextInt();
+							entrada.nextLine();
+							break;
+						case 2:
+							System.out.println("Introduce nueva Localidad: ");
+							localidades[posicionNombre] = entrada.nextLine();
+							entrada.nextLine();
+							break;
+						case 3:
+							System.out.println("Introduce nueva Edad: ");
+							edades[posicionNombre] = entrada.nextInt();
+							entrada.nextLine();
+							
+							System.out.println("Introduce nueva Localidad: ");
+							localidades[posicionNombre] = entrada.nextLine();
+							break;
+							
+						default:
+							System.out.println("OPCION NO VALIDA");
+						}
+						
+					}else {
+						System.out.println("No se ha encontrado a nadie con ese nombre.");
+					}
 					break;
 				case 4:
+					System.out.println("¿Que persona desea eliminar?");
+					personaAEliminar = entrada.nextLine();
+					
+					posicionNombre = Funcionalidades.buscarXNombre(personaAEliminar, nombres);
+					
+					if (posicionNombre != 0) {
+						nombres[posicionNombre] = null;
+						edades[posicionNombre] = 0;
+						localidades[posicionNombre] = null;
+						
+						Funcionalidades.correrPosiciones(posicionNombre,nombres,edades,localidades);
+					}else {
+						System.out.println("Persona no encontrada.");
+					}
+					break;
+					
+				case 5:
+					numeroGuardados = Funcionalidades.contarGuardados(nombres);
+					if (numeroGuardados != 0) {
+						for (i=0;i<numeroGuardados;i++) {
+							System.out.println(nombres[i] + " tiene " + edades[i] + " años y vive en " + localidades[i] + ".");
+						}
+					}else {
+						System.out.println("No hay personas en la Lista");
+					}
 					
 					break;
-				case 5:
+					
+				case 6:
 					fin = true;
 					break;
 				default:
