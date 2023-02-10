@@ -59,5 +59,43 @@ public class Funcionalidades {
 		return posicion;
 	}
 	
+	public static int buscarXEdad(int edad, int[] edadesArray) {
+		
+		boolean encontrado = false;
+		int posicion = -1;
+		int i = 0;
+		
+		do {
+			if (edadesArray[i] == edad){
+				encontrado = true;
+				posicion = i;
+			}
+			
+			i++;
+			
+		}while(!encontrado);
+		
+		return posicion;
+	}
+	
+	public static int buscarXLocalidad(String localidad, String[] localidadesArray) {
+		
+		boolean encontrado = false;
+		int posicion = -1;
+		int i = 0;
+		
+		do {
+			if (localidadesArray[i].equalsIgnoreCase(localidad)){
+				encontrado = true;
+				posicion = i;
+			}
+			
+			i++;
+			
+		}while(!encontrado);
+		
+		return posicion;
+	}
+	
 
 }

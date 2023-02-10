@@ -10,7 +10,7 @@ public class Practica1{
 		int [] edades = new int[20];
 		String[] localidades = new String[20];
 		
-		int opcion,guardados,edadAux,filtroBusqueda,posicionNombre,edadABuscar;
+		int opcion,guardados,edadAux,filtroBusqueda,posicionNombre,posicionEdad,posicionLocalidad,edadABuscar;
 		String nombreAux,localidadAux,nombreABuscar,localidadABuscar;
 		boolean fin=false;
 		
@@ -57,6 +57,7 @@ public class Practica1{
 					
 					switch(filtroBusqueda) {
 						case 1:
+							
 							System.out.println("Nombre a buscar");
 							nombreABuscar = entrada.nextLine();
 							if (nombres[0] != null) {
@@ -65,23 +66,51 @@ public class Practica1{
 								if (posicionNombre != -1) {
 									System.out.println("La edad de " + nombreABuscar + " es de " + edades[posicionNombre] + " y vive en " + localidades[posicionNombre]);
 								}else {
-									System.out.println("Nombre no encontrado");
+									System.out.println("No hay ninguna persona con ese nombre.");
 								}
 							}else {
-								System.out.println("No hay información de ninguna Persona");
+								System.out.println("No hay información de ninguna persona.");
 							}
 							
 							break;
 						case 2:
+							
 							System.out.println("Edad a buscar");
 							edadABuscar = entrada.nextInt();
 							entrada.nextLine();
 							
+							if (nombres[0] != null) {
+								posicionEdad = Funcionalidades.buscarXEdad(edadABuscar,edades);
+								
+								if (posicionEdad != -1) {
+									System.out.println("La persona que tiene " + edadABuscar + " años es " + nombres[posicionEdad] + " y vive en " + localidades[posicionEdad]);
+								}else {
+									System.out.println("No hay ninguna persona con esa edad.");
+								}
+							}else {
+								System.out.println("No hay información de ninguna persona.");
+							}
+							
+							break;
 						case 3:
 							
 							System.out.println("Localidad a buscar");
 							localidadABuscar = entrada.nextLine();
 
+							if (nombres[0] != null) {
+								posicionLocalidad = Funcionalidades.buscarXLocalidad(localidadABuscar,localidades);
+								
+								if (posicionLocalidad != -1) {
+									System.out.println("En " + localidadABuscar + " vive " + nombres[posicionLocalidad] + " y tiene " + edades[posicionLocalidad] + " años.");
+								}else {
+									System.out.println("No hay ninguna persona con esa edad.");
+								}
+							}else {
+								System.out.println("No hay información de ninguna persona.");
+							}
+							
+							break;
+							
 						default:
 							
 					}
