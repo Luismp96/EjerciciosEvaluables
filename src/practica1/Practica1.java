@@ -1,5 +1,6 @@
 package practica1;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Practica1{
@@ -60,8 +61,7 @@ public class Practica1{
 					System.out.println("3 - BUSCAR POR LOCALIDAD");
 					
 					filtroBusqueda = entrada.nextInt(); entrada.nextLine();
-					
-				    try {
+								    
 					switch(filtroBusqueda) {
 						case 1:
 							
@@ -73,6 +73,7 @@ public class Practica1{
 								posicionNombre = Funcionalidades.buscarXNombre(nombreABuscar,nombres);
 								
 								if (posicionNombre == -1) {
+			
 									System.out.println("No hay ninguna persona que se llame " + nombreABuscar + ".");
 									
 								}else {
@@ -127,9 +128,7 @@ public class Practica1{
 							System.out.println("FILTRO DE BUSQUEDA INVÁLIDO.");
 					}
 					
-				    }catch(Exception e){
-				    	System.out.println("EL DATO INTRODUCIDO NO ES NUMERICO");
-				    }
+				    
 					
 					break;
 					
