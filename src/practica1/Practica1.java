@@ -33,21 +33,23 @@ public class Practica1{
 					guardados = Funcionalidades.contarGuardados(nombres);	
 					System.out.println(guardados);
 					
-					System.out.println("Nombre de la Persona a añadir: ");
-					nombreAux = entrada.nextLine();
-					
-					System.out.println("Introduzca su edad: ");
-					edadAux = entrada.nextInt();
-					entrada.nextLine(); 
-					
-					System.out.println("Localidad donde reside: ");
-					localidadAux = entrada.nextLine();
-					
 					if (guardados < 20) {
+						
+						System.out.println("Nombre de la Persona a añadir: ");
+						nombreAux = entrada.nextLine();
+						
+						System.out.println("Introduzca su edad: ");
+						edadAux = entrada.nextInt();
+						entrada.nextLine(); 
+						
+						System.out.println("Localidad donde reside: ");
+						localidadAux = entrada.nextLine();
+						
 						Funcionalidades.addPersona(nombreAux,edadAux,localidadAux,guardados,nombres,edades,localidades);
 					}else {
 						System.out.println("ARRAYS COMPLETOS, ELIMINE UNO ANTES");
 					}
+					
 					break;
 					
 				case 2:
@@ -59,12 +61,12 @@ public class Practica1{
 					
 					filtroBusqueda = entrada.nextInt(); entrada.nextLine();
 					
+				    try {
 					switch(filtroBusqueda) {
 						case 1:
 							
 							System.out.println("Nombre a buscar");
 							nombreABuscar = entrada.nextLine();
-							finNombres = false;
 							
 							if (nombres[0] != null) {
 								
@@ -122,14 +124,20 @@ public class Practica1{
 							break;
 							
 						default:
-							
+							System.out.println("FILTRO DE BUSQUEDA INVÁLIDO.");
 					}
 					
+				    }catch(Exception e){
+				    	System.out.println("EL DATO INTRODUCIDO NO ES NUMERICO");
+				    }
+					
 					break;
+					
 				case 3:
 					System.out.println("¿Que persona desea modificar?");
 						
 					nombreAModificar = entrada.nextLine();
+					posicionNombre = -1;
 					
 					posicionNombre = Funcionalidades.buscarXNombre(nombreAModificar, nombres);
 					
@@ -142,51 +150,60 @@ public class Practica1{
 						filtroBusqueda = entrada.nextInt();
 						
 						switch (filtroBusqueda) {
-						case 1:
-							System.out.println("Introduce nueva Edad: ");
-							edades[posicionNombre] = entrada.nextInt();
-							entrada.nextLine();
-							break;
-						case 2:
-							System.out.println("Introduce nueva Localidad: ");
-							localidades[posicionNombre] = entrada.nextLine();
-							entrada.nextLine();
-							break;
-						case 3:
-							System.out.println("Introduce nueva Edad: ");
-							edades[posicionNombre] = entrada.nextInt();
-							entrada.nextLine();
+							case 1:
+								System.out.println("Introduce nueva Edad: ");
+								edades[posicionNombre] = entrada.nextInt();
+								entrada.nextLine();
+								break;
+							case 2:
+								System.out.println("Introduce nueva Localidad: ");
+								entrada.nextLine();
+								localidades[posicionNombre] = entrada.nextLine();
+								
+								break;
+							case 3:
+								System.out.println("Introduce nueva Edad: ");
+								edades[posicionNombre] = entrada.nextInt();
+								entrada.nextLine();
 							
-							System.out.println("Introduce nueva Localidad: ");
-							localidades[posicionNombre] = entrada.nextLine();
-							break;
+								System.out.println("Introduce nueva Localidad: ");
+								localidades[posicionNombre] = entrada.nextLine();
+								break;
 							
-						default:
-							System.out.println("OPCION NO VALIDA");
-						}
+							default:
+								System.out.println("OPCION NO VALIDA");
+								break;
+							}
 						
 					}else {
 						System.out.println("No se ha encontrado a nadie con ese nombre.");
 					}
 					break;
 				case 4:
+					
 					System.out.println("¿Que persona desea eliminar?");
 					personaAEliminar = entrada.nextLine();
 					
 					posicionNombre = Funcionalidades.buscarXNombre(personaAEliminar, nombres);
 					
-					if (posicionNombre != 0) {
+					if (posicionNombre != -1) {
+						
+						System.out.println("Nombre a borrar encontrado.. ELIMINANDO...");
 						nombres[posicionNombre] = null;
 						edades[posicionNombre] = 0;
 						localidades[posicionNombre] = null;
 						
+						System.out.println("NOMBRE BORRADO CORRECTAMENTE :)");
+						
 						Funcionalidades.correrPosiciones(posicionNombre,nombres,edades,localidades);
+						
 					}else {
 						System.out.println("Persona no encontrada.");
 					}
 					break;
 					
 				case 5:
+					
 					numeroGuardados = Funcionalidades.contarGuardados(nombres);
 					if (numeroGuardados != 0) {
 						for (i=0;i<numeroGuardados;i++) {

@@ -110,12 +110,33 @@ public class Funcionalidades {
 		
 		return posicion;
 	}
-	public static int correrPosiciones(int posicion,String[] nombres,int[] edades,String[] localidadesArray) {
+	
+	public static void correrPosiciones(int posicion,String[] nombres,int[] edades,String[] localidades) {
 		
-		boolean encontrado = false;
+		boolean finDatos = false;
+		int siguiente = posicion + 1;
 		
-		return posicion;
+		
+		if (nombres[siguiente] != null)
+			do {
+				nombres[posicion] = nombres[siguiente];
+				edades[posicion] = edades[siguiente];
+				localidades[posicion] = localidades[siguiente];
+				
+				nombres[siguiente] = null;
+				edades[siguiente] = 0;
+				localidades[siguiente] = null;
+				
+				posicion++;
+				siguiente++;
+				
+				if (nombres[siguiente] == null) {
+					finDatos = true;
+				}
+			
+			}while(!finDatos);
+		
 	}
 	
 
-	}
+}
