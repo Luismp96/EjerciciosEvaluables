@@ -8,19 +8,17 @@ public class Funcionalidades {
 	
 	public static void mostrarMenu() {
 		System.out.println("MENU:");
-		System.out.println("1 - AÑADIR PERSONA.");
-		System.out.println("2 - BUSCAR PERSONA.");
-		System.out.println("3 - MODIFICAR PERSONA.");
-		System.out.println("4 - ELIMINAR PERSONA.");
-		System.out.println("5 - CONSULTAR LISTA PERSONAS.");
+		System.out.println("1 - AÑADIR ALCALDE/LOCALIDAD NUEVA.");
+		System.out.println("2 - BUSCAR ALCALDE/EDAD/LOCALIDAD.");
+		System.out.println("3 - MODIFICAR ALCALDE/EDAD.");
+		System.out.println("4 - ELIMINAR LOCALIDAD/ALCALDE.");
+		System.out.println("5 - CONSULTAR LISTA ALCALDES Y POBLACION DONDE GOBIERNA.");
 		System.out.println("6 - SALIR.");
 	}
 	
 	public static int contarGuardados(String[] nombres){
 		
 		int i=0;
-		
-		System.out.println("contarGuardados");
 		
 		do {
 			if(nombres[i] != null) {
@@ -32,8 +30,6 @@ public class Funcionalidades {
 	}
 	
 	public static void addPersona(String nombre, int edad, String localidad,int posicion,String[] nombres, int[] edades,String[] localidades) {
-		
-		System.out.println("addPersona");
 		
 		nombres[posicion] = nombre;
 		edades[posicion] = edad;

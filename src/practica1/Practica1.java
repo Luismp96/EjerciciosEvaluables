@@ -12,11 +12,13 @@ public class Practica1{
 		String[] localidades = new String[20];
 		
 		
-		int opcion,guardados,edadAux,filtroBusqueda,posicionEdad,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados;
-		String nombreAux,localidadAux,nombreABuscar,localidadABuscar,nombreAModificar,personaAEliminar;
+		int opcion,guardados,edadAux,filtroBusqueda,posicionEdad,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados,respuesta;
+		String nombreAux,localidadAux,nombreABuscar,localidadABuscar,localidadAModificar,localidadAEliminar;
 		boolean fin=false;
-		boolean finNombres;
-		boolean finPersonas = false;
+		
+		boolean duplicadoNombre, duplicadaLocalidad;
+		boolean finValidaciones;
+		
 		int i=0;
 		
 		Scanner entrada = new Scanner(System.in);
@@ -32,23 +34,56 @@ public class Practica1{
 				case 1:
 					
 					guardados = Funcionalidades.contarGuardados(nombres);	
-					System.out.println(guardados);
 					
 					if (guardados < 20) {
 						
-						System.out.println("Nombre de la Persona a añadir: ");
-						nombreAux = entrada.nextLine();
+						finValidaciones = false;
+						duplicadoNombre = false;
+						duplicadaLocalidad = false;
 						
-						System.out.println("Introduzca su edad: ");
-						edadAux = entrada.nextInt();
-						entrada.nextLine(); 
+						do {
+							System.out.println("NOMBRE DEL ALCADE A AÑADIR: ");
+							nombreAux = entrada.nextLine();
+							
+							respuesta = Funcionalidades.buscarXNombre(nombreAux, nombres);
+							
+							if (respuesta != -1) {
+								duplicadoNombre = true;
+							}
+							
+							System.out.println("INTRODUZCA SU EDAD: ");
+							edadAux = entrada.nextInt();
+							entrada.nextLine(); 
+							
+							System.out.println("LOCALIDAD QUE GOBIERNA: ");
+							localidadAux = entrada.nextLine();
+							
+							respuesta = Funcionalidades.buscarXLocalidad(localidadAux, localidades);
+							
+							if (respuesta != -1) {
+								duplicadaLocalidad = true;
+							}
+							
+							finValidaciones = true;
+							
+						}while(!duplicadoNombre && !finValidaciones && !duplicadaLocalidad);
 						
-						System.out.println("Localidad donde reside: ");
-						localidadAux = entrada.nextLine();
 						
-						Funcionalidades.addPersona(nombreAux,edadAux,localidadAux,guardados,nombres,edades,localidades);
+						if (duplicadoNombre) {
+							System.out.println("* ALCALDE YA GUARDADO, ENTRE POR MODIFICACION *");
+							
+						}else {
+							if (duplicadaLocalidad) {
+								System.out.println("* LOCALIDAD YA CON ALCALDE, ENTRE POR MODIFICACION *");
+							}else {
+							Funcionalidades.addPersona(nombreAux,edadAux,localidadAux,guardados,nombres,edades,localidades);
+							System.out.println("* ALCALDE AÑADIDO CORRECTAMENTE *");
+							}
+						}
+						
+						
 					}else {
-						System.out.println("ARRAYS COMPLETOS, ELIMINE UNO ANTES");
+						System.out.println("* ARRAYS COMPLETOS, ELIMINE UN ALCALDE ANTES *");
 					}
 					
 					break;
@@ -56,8 +91,8 @@ public class Practica1{
 				case 2:
 					
 					System.out.println("QUE DESEA HACER: ");
-					System.out.println("1 - BUSCAR POR NOMBRE");
-					System.out.println("2 - BUSCAR POR EDAD");
+					System.out.println("1 - BUSCAR POR NOMBRE ALCALDE");
+					System.out.println("2 - BUSCAR POR EDAD ALCALDE");
 					System.out.println("3 - BUSCAR POR LOCALIDAD");
 					
 					filtroBusqueda = entrada.nextInt(); entrada.nextLine();
@@ -65,7 +100,7 @@ public class Practica1{
 					switch(filtroBusqueda) {
 						case 1:
 							
-							System.out.println("Nombre a buscar");
+							System.out.println("NOMBRE A BUSCAR: ");
 							nombreABuscar = entrada.nextLine();
 							
 							if (nombres[0] != null) {
@@ -73,22 +108,23 @@ public class Practica1{
 								posicionNombre = Funcionalidades.buscarXNombre(nombreABuscar,nombres);
 								
 								if (posicionNombre == -1) {
-			
-									System.out.println("No hay ninguna persona que se llame " + nombreABuscar + ".");
+									
+									System.out.println("* NO HAY NINGUN ALCALDE QUE SE LLAME " + nombreABuscar + ". *");
 									
 								}else {
-									System.out.println(nombreABuscar + " tiene " + edades[posicionNombre] + " años y vive en " + localidades[posicionNombre]);
+									System.out.println("* ALCALDE ENCONTRADO *");
+									System.out.println(nombreABuscar + " TIENE " + edades[posicionNombre] + " AÑOS Y VIVE EN " + localidades[posicionNombre] + ".");
 								}
 								
 							
 							}else {
-								System.out.println("No hay información de ninguna persona.");
+								System.out.println("* NO HAY NINGUN ALCALDE CON ESE NOMBRE. *");
 							}
 							
 							break;
 						case 2:
 							
-							System.out.println("Edad a buscar");
+							System.out.println("EDAD A BUSCAR: ");
 							edadABuscar = entrada.nextInt();
 							entrada.nextLine();
 							
@@ -96,30 +132,32 @@ public class Practica1{
 								posicionEdad = Funcionalidades.buscarXEdad(edadABuscar,edades);
 								
 								if (posicionEdad != -1) {
-									System.out.println("La persona que tiene " + edadABuscar + " años es " + nombres[posicionEdad] + " y vive en " + localidades[posicionEdad]);
+									System.out.println("* ALCALDE ENCONTRADO *");
+									System.out.println("EL ALCALDE QUE TIENE " + edadABuscar + " AÑOS ES " + nombres[posicionEdad] + " Y GOBIERNA EN " + localidades[posicionEdad] + ".");
 								}else {
-									System.out.println("No hay ninguna persona con " + edadABuscar + " años.");
+									System.out.println("* NO HAY NINGUN ALCALDE CON " + edadABuscar + " AÑOS. *");
 								}
 							}else {
-								System.out.println("No hay información de ninguna persona.");
+								System.out.println("* NO HAY INFORMACION DE NINGUN ALCALDE. *");
 							}
 							
 							break;
 						case 3:
 							
-							System.out.println("Localidad a buscar");
+							System.out.println("LOCALIDAD A BUSCAR: ");
 							localidadABuscar = entrada.nextLine();
 
 							if (nombres[0] != null) {
 								posicionLocalidad = Funcionalidades.buscarXLocalidad(localidadABuscar,localidades);
 								
 								if (posicionLocalidad != -1) {
-									System.out.println("En " + localidadABuscar + " vive " + nombres[posicionLocalidad] + " y tiene " + edades[posicionLocalidad] + " años.");
+									System.out.println("* ALCALDE ENCONTRADO *");
+									System.out.println("EN " + localidadABuscar + " GOBIERNA " + nombres[posicionLocalidad] + " Y TIENE " + edades[posicionLocalidad] + " AÑOS.");
 								}else {
-									System.out.println("No hay ninguna persona que viva en " + localidadABuscar +".");
+									System.out.println("* NO HAY ALCALDE ELEGIDO EN " + localidadABuscar + ".");
 								}
 							}else {
-								System.out.println("No hay información de ninguna persona.");
+								System.out.println("* NO HAY INFORMACION DE NINGUN ALCALDE. *");
 							}
 							
 							break;
@@ -133,71 +171,76 @@ public class Practica1{
 					break;
 					
 				case 3:
-					System.out.println("¿Que persona desea modificar?");
+					System.out.println("¿QUE LOCALIDAD DESEA MODIFICAR?");
 						
-					nombreAModificar = entrada.nextLine();
-					posicionNombre = -1;
+					localidadAModificar = entrada.nextLine();
+					posicionLocalidad = -1;
 					
-					posicionNombre = Funcionalidades.buscarXNombre(nombreAModificar, nombres);
+					posicionLocalidad = Funcionalidades.buscarXLocalidad(localidadAModificar, localidades);
 					
-					if (posicionNombre != -1) {
-						System.out.println("Nombre encontrado... ¿Que desea modificar?");
-						System.out.println("1 - EDAD");
-						System.out.println("2 - LOCALIDAD");
+					if (posicionLocalidad != -1) {
+						System.out.println("* LOCALIDAD ENCONTRADA... ¿QUE DESEA MODIFICAR?");
+						System.out.println("1 - EDAD ALCALDE");
+						System.out.println("2 - NOMBRE ALCALDE");
 						System.out.println("3 - AMBAS");
 						
 						filtroBusqueda = entrada.nextInt();
 						
 						switch (filtroBusqueda) {
 							case 1:
-								System.out.println("Introduce nueva Edad: ");
-								edades[posicionNombre] = entrada.nextInt();
+								System.out.println("INTRODUCE NUEVA EDAD: ");
+								edades[posicionLocalidad] = entrada.nextInt();
 								entrada.nextLine();
+								System.out.println("* EDAD MODIFICADA CORRECTAMENTE *");
 								break;
 							case 2:
-								System.out.println("Introduce nueva Localidad: ");
+								System.out.println("INTRODUCE NOMBRE NUEVO ALCALDE: ");
 								entrada.nextLine();
-								localidades[posicionNombre] = entrada.nextLine();
+								nombres[posicionLocalidad] = entrada.nextLine();
+								System.out.println("* NOMBRE ALCALDE MODIFICADO CORRECTAMENTE *");
 								
 								break;
 							case 3:
-								System.out.println("Introduce nueva Edad: ");
-								edades[posicionNombre] = entrada.nextInt();
+								
+								System.out.println("INTRODUCE NOMBRE NUEVO ALCALDE: ");
+								nombres[posicionLocalidad] = entrada.nextLine();
+								
+								System.out.println("INTRODUCE NUEVA EDAD: ");
+								edades[posicionLocalidad] = entrada.nextInt();
 								entrada.nextLine();
-							
-								System.out.println("Introduce nueva Localidad: ");
-								localidades[posicionNombre] = entrada.nextLine();
+								System.out.println("* NOMBRE Y EDAD ALCALDE MODIFICADO CORRECTAMENTE *");
+								
 								break;
 							
 							default:
-								System.out.println("OPCION NO VALIDA");
+								System.out.println("* OPCION NO VALIDA: NO SE HA MODIFICADO. *");
 								break;
 							}
 						
 					}else {
-						System.out.println("No se ha encontrado a nadie con ese nombre.");
+						System.out.println("* NO SE HA ENCONTRADO LOCALIDAD: NO SE HA MODIFICADO. *");
 					}
 					break;
 				case 4:
 					
-					System.out.println("¿Que persona desea eliminar?");
-					personaAEliminar = entrada.nextLine();
+					System.out.println("¿QUE LOCALIDAD QUIERE ELIMINAR?");
+					localidadAEliminar = entrada.nextLine();
 					
-					posicionNombre = Funcionalidades.buscarXNombre(personaAEliminar, nombres);
+					posicionLocalidad = Funcionalidades.buscarXLocalidad(localidadAEliminar, nombres);
 					
-					if (posicionNombre != -1) {
+					if (posicionLocalidad != -1) {
 						
-						System.out.println("Nombre a borrar encontrado.. ELIMINANDO...");
-						nombres[posicionNombre] = null;
-						edades[posicionNombre] = 0;
-						localidades[posicionNombre] = null;
+						System.out.println("* LOCALIDAD A ELIMINAR ENCONTRADA.. ELIMINANDO... *");
+						nombres[posicionLocalidad] = null;
+						edades[posicionLocalidad] = 0;
+						localidades[posicionLocalidad] = null;
 						
-						System.out.println("NOMBRE BORRADO CORRECTAMENTE :)");
+						System.out.println("* LOCALIDAD BORRADA CORRECTAMENTE *)");
 						
-						Funcionalidades.correrPosiciones(posicionNombre,nombres,edades,localidades);
+						Funcionalidades.correrPosiciones(posicionLocalidad,nombres,edades,localidades);
 						
 					}else {
-						System.out.println("Persona no encontrada.");
+						System.out.println("* LOCALIDAD NO ENCONTRADA: NO SE PUEDE ELIMINAR *");
 					}
 					break;
 					
@@ -206,10 +249,10 @@ public class Practica1{
 					numeroGuardados = Funcionalidades.contarGuardados(nombres);
 					if (numeroGuardados != 0) {
 						for (i=0;i<numeroGuardados;i++) {
-							System.out.println(nombres[i] + " tiene " + edades[i] + " años y vive en " + localidades[i] + ".");
+							System.out.println(nombres[i] + " TIENE " + edades[i] + " AÑOS Y GOBIERNA EN " + localidades[i] + ".");
 						}
 					}else {
-						System.out.println("No hay personas en la Lista");
+						System.out.println("* NO HAY ALCALDES EN LA LISTA *");
 					}
 					
 					break;
@@ -218,7 +261,7 @@ public class Practica1{
 					fin = true;
 					break;
 				default:
-					System.out.println("OPCION NO VALIDA, INTENTELO DE NUEVO.");
+					System.out.println("* OPCION NO VALIDA, INTENTELO DE NUEVO. *");
 					
 					break;
 			}
@@ -227,7 +270,7 @@ public class Practica1{
 		}while(!fin);
 		
 		entrada.close();
-		System.out.println("GRACIAS POR USAR LA APLICACIÓN");
+		System.out.println("***** GRACIAS POR USAR LA APLICACIÓN :) *****");
 	}
 	
 	
