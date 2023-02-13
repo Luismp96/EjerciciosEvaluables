@@ -1,9 +1,19 @@
 package practica1;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * @author Luis Martin Portillo.
+ * @version 1.1.1
+ */
+
 public class Practica1{
+	
+	/**
+	 * @author Luis Martin Portillo.
+	 * @param args - args necesario main
+	 * @version 1.1.1
+	 */
 
 	public static void main(String[] args) {
 		
@@ -176,7 +186,7 @@ public class Practica1{
 							break;
 							
 						default:
-							System.out.println("FILTRO DE BUSQUEDA INVÁLIDO.");
+							System.out.println("FILTRO DE BUSQUEDA INVALIDO.");
 					}
 					
 				    

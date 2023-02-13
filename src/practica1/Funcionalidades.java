@@ -1,13 +1,17 @@
 package practica1;
 
-import java.util.Scanner;
+
+/**
+ * @author Luis Martin Portillo.
+ * @version 1.1.1
+ */
 
 public class Funcionalidades {
 	
-	/* El metodo contarGuardados devuelve el numero de elementos que hay guardados en el Array de entrada.
+	/** 
 	 * @author Luis Martin Portillo.
 	 * @param entrada - Array Datos de Entrada.
-	 * @return int -  Numero de datos guardados en el Array de Entrada.
+	 * @return int - numero datos guardados
 	 * @version 1.1.1
 	 */
 
@@ -26,11 +30,11 @@ public class Funcionalidades {
 	}
 	
 	
-	/* El metodo buscarArrayString devuelve la posicion de la lista que ocupa el nombre de entrada.
+	/** 
 	 * @author Luis Martin Portillo.
 	 * @param entrada - dato de entrada por el que se busca.
 	 * @param entradaArray - array donde se busca el dato.
-	 * @return int -  devuelve la posicion de la lista donde se encuentra el dato buscado.
+	 * @return int - posicion dentro del array
 	 * @version 1.1.1
 	 */
 	
@@ -58,11 +62,11 @@ public class Funcionalidades {
 		return posicion;
 	}
 	
-	/* El metodo buscarArrayInt devuelve la posicion de la lista que ocupa la edad de entrada.
+	/** 
 	 * @author Luis Martin Portillo.
 	 * @param entrada - dato de entrada por el que se busca.
 	 * @param entradaArray - array donde se busca el dato.
-	 * @return int -  devuelve la posicion de la lista donde se encuentra el dato buscado.
+	 * @return int - posicion dentro del array
 	 * @version 1.1.1
 	 */
 	
@@ -90,7 +94,7 @@ public class Funcionalidades {
 	}
 	
 	
-	/* El metodo correrPosiciones agrupa los datos de los 3 arrays de entrada para que no haya posiciones vacias a partir de la posicion de entrada.
+	/** El metodo correrPosiciones agrupa los datos de los 3 arrays de entrada para que no haya posiciones vacias a partir de la posicion de entrada.
 	 * @author Luis Martin Portillo.
 	 * @param posicionOrigen - posicion de la lista a partir de la cual se empieza a agrupar.
 	 * @param arrayEntrada1 - array1 a agrupar.
