@@ -4,40 +4,37 @@ import java.util.Scanner;
 
 public class Funcionalidades {
 	
-	static Scanner entrada = new Scanner(System.in);
+	/* El metodo contarGuardados devuelve el numero de elementos que hay guardados en el Array de entrada.
+	 * @author Luis Martin Portillo.
+	 * @param entrada - Array Datos de Entrada.
+	 * @return int -  Numero de datos guardados en el Array de Entrada.
+	 * @version 1.1.1
+	 */
+
 	
-	public static void mostrarMenu() {
-		System.out.println("MENU:");
-		System.out.println("1 - AÑADIR ALCALDE/LOCALIDAD NUEVA.");
-		System.out.println("2 - BUSCAR ALCALDE/EDAD/LOCALIDAD.");
-		System.out.println("3 - MODIFICAR ALCALDE/EDAD.");
-		System.out.println("4 - ELIMINAR LOCALIDAD/ALCALDE.");
-		System.out.println("5 - CONSULTAR LISTA ALCALDES Y POBLACION DONDE GOBIERNA.");
-		System.out.println("6 - SALIR.");
-	}
-	
-	public static int contarGuardados(String[] nombres){
+	public static int contarGuardados(String[] entrada){
 		
 		int i=0;
 		
 		do {
-			if(nombres[i] != null) {
+			if(entrada[i] != null) {
 				i++;
 			}
-		}while(nombres[i] != null);
+		}while(entrada[i] != null);
 			
 		return i;
 	}
 	
-	public static void addPersona(String nombre, int edad, String localidad,int posicion,String[] nombres, int[] edades,String[] localidades) {
-		
-		nombres[posicion] = nombre;
-		edades[posicion] = edad;
-		localidades[posicion] = localidad;
-		
-	}
 	
-	public static int buscarXNombre(String nombre, String[] nombresArray) {
+	/* El metodo buscarArrayString devuelve la posicion de la lista que ocupa el nombre de entrada.
+	 * @author Luis Martin Portillo.
+	 * @param entrada - dato de entrada por el que se busca.
+	 * @param entradaArray - array donde se busca el dato.
+	 * @return int -  devuelve la posicion de la lista donde se encuentra el dato buscado.
+	 * @version 1.1.1
+	 */
+	
+	public static int buscarArrayString(String entrada, String[] entradaArray) {
 		
 		boolean encontrado = false;
 		boolean finArray = false;
@@ -46,8 +43,8 @@ public class Funcionalidades {
 		
 		do {
 			
-			if (nombresArray[i] != null) {
-				if (nombresArray[i].equalsIgnoreCase(nombre)){
+			if (entradaArray[i] != null) {
+				if (entradaArray[i].equalsIgnoreCase(entrada)){
 					posicion= i;
 					encontrado = true;
 				}
@@ -61,7 +58,15 @@ public class Funcionalidades {
 		return posicion;
 	}
 	
-	public static int buscarXEdad(int edad, int[] edadesArray) {
+	/* El metodo buscarArrayInt devuelve la posicion de la lista que ocupa la edad de entrada.
+	 * @author Luis Martin Portillo.
+	 * @param entrada - dato de entrada por el que se busca.
+	 * @param entradaArray - array donde se busca el dato.
+	 * @return int -  devuelve la posicion de la lista donde se encuentra el dato buscado.
+	 * @version 1.1.1
+	 */
+	
+	public static int buscarArrayInt(int entrada, int[] entradaArray) {
 		
 		boolean encontrado = false;
 		boolean finArray = false;
@@ -69,8 +74,8 @@ public class Funcionalidades {
 		int i = 0;
 		
 		do {
-			if (edadesArray[i] != 0){
-				if (edadesArray[i] == edad){
+			if (entradaArray[i] != 0){
+				if (entradaArray[i] == entrada){
 					encontrado = true;
 					posicion = i;
 				}
@@ -84,55 +89,43 @@ public class Funcionalidades {
 		return posicion;
 	}
 	
-	public static int buscarXLocalidad(String localidad, String[] localidadesArray) {
-		
-		boolean encontrado = false;
-		boolean finArray = false;
-		int posicion = -1;
-		int i = 0;
-		
-		do {
-			if (localidadesArray[i] != null) {
-				if (localidadesArray[i].equalsIgnoreCase(localidad)){
-					encontrado = true;
-					posicion = i;
-				}
-			}else {
-				finArray = true;
-			}
-			i++;
-			
-		}while(!encontrado && !finArray);
-		
-		return posicion;
-	}
 	
-	public static void correrPosiciones(int posicion,String[] nombres,int[] edades,String[] localidades) {
+	/* El metodo correrPosiciones agrupa los datos de los 3 arrays de entrada para que no haya posiciones vacias a partir de la posicion de entrada.
+	 * @author Luis Martin Portillo.
+	 * @param posicionOrigen - posicion de la lista a partir de la cual se empieza a agrupar.
+	 * @param arrayEntrada1 - array1 a agrupar.
+	 * @param arrayEntrada2 - array2 a agrupar.
+	 * @param arrayEntrada3 - array3 a agrupar.
+	 * @version 1.1.1
+	 */
+	
+	public static void correrPosiciones(int posicionOrigen,String[] arrayEntrada1,int[] arrayEntrada2,String[] arrayEntrada3) {
 		
 		boolean finDatos = false;
-		int siguiente = posicion + 1;
+		
+		int i = posicionOrigen;		
+		int siguiente = i + 1;
 		
 		
-		if (nombres[siguiente] != null)
-			do {
-				nombres[posicion] = nombres[siguiente];
-				edades[posicion] = edades[siguiente];
-				localidades[posicion] = localidades[siguiente];
-				
-				nombres[siguiente] = null;
-				edades[siguiente] = 0;
-				localidades[siguiente] = null;
-				
-				posicion++;
-				siguiente++;
-				
-				if (nombres[siguiente] == null) {
-					finDatos = true;
-				}
+		if (arrayEntrada1[siguiente] == null) {
+			finDatos = true;
+		}
+		
+		do {
 			
-			}while(!finDatos);
-		
+			arrayEntrada1[i] = arrayEntrada1[siguiente];
+			arrayEntrada2[i] = arrayEntrada2[siguiente];
+			arrayEntrada3[i] = arrayEntrada3[siguiente];
+			
+			i++;
+			siguiente ++;
+			
+			if (arrayEntrada1[siguiente] == null) {
+				finDatos = true;
+			}
+			
+		}while(!finDatos);
+	
 	}
 	
-
 }
