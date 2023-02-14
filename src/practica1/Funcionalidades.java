@@ -24,7 +24,7 @@ public class Funcionalidades {
 			if(entrada[i] != null) {
 				i++;
 			}
-		}while(entrada[i] != null);
+		}while(entrada[i] != null && i<20);
 			
 		return i;
 	}
@@ -132,6 +132,14 @@ public class Funcionalidades {
 		}while(!finDatos);
 	
 	}
+	
+	/** 
+	 * @author Luis Martin Portillo.
+	 * @param entrada - dato de entrada por el que se busca.
+	 * @param entradaArray - array donde se busca el dato.
+	 * @return int[] - cada una de las posiciones que ocupa el dato de entrada dentro del Array
+	 * @version 1.1.1
+	 */
 	
 	public static int[] obtenerPosiciones(int entrada, int[] entradaArray) {
 		

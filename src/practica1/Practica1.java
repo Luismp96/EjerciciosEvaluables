@@ -24,7 +24,7 @@ public class Practica1{
 		int[] busquedaEdad = new int[20];
 		
 		
-		int opcionMenu,guardados,edadAux,filtroBusqueda,posicionEdad,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados,respuesta,posicionLocalidadAux,posicionAlcalde;
+		int opcionMenu,guardados,edadAux,filtroBusqueda,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados,respuesta,posicionLocalidadAux,posicionAlcalde;
 		String nombreAux,localidadAux,nombreABuscar,localidadABuscar,localidadAModificar,localidadAEliminar,nombreAModificar,alcaldeAEliminar;
 		boolean fin=false;
 		
@@ -35,10 +35,6 @@ public class Practica1{
 		posicionLocalidad = -1;
 		
 		Scanner entrada = new Scanner(System.in);
-		
-		for(i=0;i<20;i++) {
-			edades[i]=-1;
-		}
 		
 		do {
 			
@@ -144,10 +140,10 @@ public class Practica1{
 					switch(filtroBusqueda) {
 						case 1:
 							
-							System.out.println("NOMBRE A BUSCAR: ");
-							nombreABuscar = entrada.nextLine();
-							
 							if (nombres[0] != null) {
+								
+								System.out.println("NOMBRE A BUSCAR: ");
+								nombreABuscar = entrada.nextLine();
 								
 								posicionNombre = Funcionalidades.buscarArrayString(nombreABuscar,nombres);
 								
@@ -162,20 +158,20 @@ public class Practica1{
 								
 							
 							}else {
-								System.out.println("* NO HAY NINGUN ALCALDE CON ESE NOMBRE. *");
+								System.out.println("* NO HAY DATOS GUARDADOS. *");
 							}
 							
 							break;
 						case 2:
 							
-							System.out.println("EDAD A BUSCAR: ");
-							edadABuscar = entrada.nextInt();
-							entrada.nextLine();
-							
 							finBusqueda = false;
 							i = 0;
 							
 							if (edades[0] != 0) {
+								
+								System.out.println("EDAD A BUSCAR: ");
+								edadABuscar = entrada.nextInt();
+								entrada.nextLine();
 								
 								busquedaEdad = Funcionalidades.obtenerPosiciones(edadABuscar,edades);
 								
@@ -220,7 +216,7 @@ public class Practica1{
 									System.out.println("* NO HAY ALCALDE ELEGIDO EN " + localidadABuscar + ".");
 								}
 							}else {
-								System.out.println("* NO HAY INFORMACION DE NINGUN ALCALDE. *");
+								System.out.println("* NO HAY DATOS GUARDADOS. *");
 							}
 							
 							break;
@@ -495,6 +491,7 @@ public class Practica1{
 		}while(!fin);
 		
 		entrada.close();
+		
 		System.out.println("***** GRACIAS POR USAR LA APLICACIÓN :) *****");
 	}
 	
