@@ -133,4 +133,29 @@ public class Funcionalidades {
 	
 	}
 	
+	public static int[] obtenerPosiciones(int entrada, int[] entradaArray) {
+		
+		int[] resultado = new int[20];
+		boolean finArray = false;
+		int i = 0;
+		int j = 0;
+		
+		do {
+			if (entradaArray[i] == entrada) {
+				resultado[j] = i;
+				j++;
+			}
+			
+			i++;
+			
+			if (entradaArray[i] == -1) {
+				finArray = true;
+			}
+			
+		}while(!finArray);
+		
+		return resultado;
+		
+	}
+	
 }
