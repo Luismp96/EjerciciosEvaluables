@@ -41,10 +41,10 @@ public class Practica1{
 			System.out.println("*************************************************************");
 			System.out.println("**************************** MENU ***************************");
 			System.out.println("*************************************************************");
-			System.out.println("*****     1 - AÑADIR ALCALDE/LOCALIDAD NUEVA.           *****");
-			System.out.println("*****     2 - BUSCAR ALCALDE/EDAD/LOCALIDAD.            *****");
-			System.out.println("*****     3 - MODIFICAR ALCALDE/EDAD.                   *****");
-			System.out.println("*****     4 - ELIMINAR LOCALIDAD/ALCALDE.               *****");
+			System.out.println("*****     1 - AÑADIR NUEVO ALCALDE.                     *****");
+			System.out.println("*****     2 - BUSCAR POR ALCALDE/EDAD/LOCALIDAD.        *****");
+			System.out.println("*****     3 - MODIFICAR POR ALCALDE/LOCALIDAD.          *****");
+			System.out.println("*****     4 - ELIMINAR REGISTRO POR LOCALIDAD/ALCALDE.  *****");
 			System.out.println("*****     5 - CONSULTAR LISTA ALCALDES Y POBLACION      *****");
 			System.out.println("*****         DONDE GOBIERNA.                           *****");
 			System.out.println("*****     6 - SALIR.                                    *****");
