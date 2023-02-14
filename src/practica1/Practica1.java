@@ -29,7 +29,7 @@ public class Practica1{
 		boolean fin=false;
 		
 		boolean duplicadoNombre, duplicadaLocalidad;
-		boolean finValidaciones,finBusqueda;
+		boolean finBusqueda;
 		
 		int i=0;
 		posicionLocalidad = -1;
@@ -44,7 +44,7 @@ public class Practica1{
 			System.out.println("*****     1 - AÑADIR NUEVO ALCALDE.                     *****");
 			System.out.println("*****     2 - BUSCAR POR ALCALDE/EDAD/LOCALIDAD.        *****");
 			System.out.println("*****     3 - MODIFICAR POR ALCALDE/LOCALIDAD.          *****");
-			System.out.println("*****     4 - ELIMINAR REGISTRO POR LOCALIDAD/ALCALDE.  *****");
+			System.out.println("*****     4 - ELIMINAR REGISTRO POR LOCALIDAD/ALCALDE.   *****");
 			System.out.println("*****     5 - CONSULTAR LISTA ALCALDES Y POBLACION      *****");
 			System.out.println("*****         DONDE GOBIERNA.                           *****");
 			System.out.println("*****     6 - SALIR.                                    *****");
@@ -63,38 +63,32 @@ public class Practica1{
 					
 					if (guardados < 20) {
 						
-						finValidaciones = false;
 						duplicadoNombre = false;
 						duplicadaLocalidad = false;
 						
-						do {
-							System.out.println("1º - NOMBRE DEL ALCADE A AÑADIR: ");
-							nombreAux = entrada.nextLine();
+						System.out.println("1º - NOMBRE DEL ALCADE A AÑADIR: ");
+						nombreAux = entrada.nextLine();
 							
-							respuesta = Funcionalidades.buscarArrayString(nombreAux, nombres);
+						respuesta = Funcionalidades.buscarArrayString(nombreAux, nombres);
 							
-							if (respuesta != -1) {
-								duplicadoNombre = true;
-							}
+						if (respuesta != -1) {
+							duplicadoNombre = true;
+						}
 							
-							System.out.println("2º - INTRODUZCA SU EDAD: ");
-							edadAux = entrada.nextInt();
-							entrada.nextLine(); 
+						System.out.println("2º - INTRODUZCA SU EDAD: ");
+						edadAux = entrada.nextInt();
+						entrada.nextLine(); 
 							
-							System.out.println("3º - LOCALIDAD QUE GOBIERNA: ");
-							localidadAux = entrada.nextLine();
+						System.out.println("3º - LOCALIDAD QUE GOBIERNA: ");
+						localidadAux = entrada.nextLine();
 							
-							respuesta = Funcionalidades.buscarArrayString(localidadAux, localidades);
+						respuesta = Funcionalidades.buscarArrayString(localidadAux, localidades);
 							
-							if (respuesta != -1) {
-								duplicadaLocalidad = true;
-							}
+						if (respuesta != -1) {
+							duplicadaLocalidad = true;
+						}
 							
-							finValidaciones = true;
 							
-						}while(!duplicadoNombre && !finValidaciones && !duplicadaLocalidad);
-						
-						
 						if (duplicadoNombre) {
 							System.out.println("*****************************************************");
 							System.out.println("* ALCALDE INTRODUCIDO YA GOBIERNA EN OTRA LOCALIDAD *");
@@ -108,6 +102,7 @@ public class Practica1{
 								System.out.println("*   NO SE PUEDE DAR DE ALTA   *");
 								System.out.println("*******************************");
 							}else {
+								
 								nombres[guardados] = nombreAux;
 								edades[guardados] = edadAux;
 								localidades[guardados] = localidadAux;
