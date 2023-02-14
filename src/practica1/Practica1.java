@@ -291,14 +291,25 @@ public class Practica1{
 								case 3:
 									
 									System.out.println("1ª - INTRODUCE NOMBRE NUEVO ALCALDE: ");
-									nombres[posicionLocalidadAux] = entrada.nextLine();
+									nombreAux= entrada.nextLine();
+									
+									if (Funcionalidades.buscarArrayString(nombreAux, nombres) != -1) {
+										System.out.println("* EL ALCALDE INTRODUCIDO YA ES ALCALDE DE " + nombres[Funcionalidades.buscarArrayString(nombreAux,nombres)]);
+									}else {
+									
+										nombres[posicionLocalidadAux] = nombreAux;
+										System.out.println("**************************************************");
+										System.out.println("*    NOMBRE ALCALDE MODIFICADO CORRECTAMENTE     *");
+										System.out.println("**************************************************");
+									}
 									
 									System.out.println("2º - INTRODUCE NUEVA EDAD: ");
-									edades[posicionLocalidadAux] = entrada.nextInt();
+									edadAux = entrada.nextInt();
 									entrada.nextLine();
+									edades[posicionLocalidadAux] = edadAux;
 									
 									System.out.println("**************************************************");
-									System.out.println("* NOMBRE Y EDAD ALCALDE MODIFICADO CORRECTAMENTE *");
+									System.out.println("*      EDAD ALCALDE MODIFICADA CORRECTAMENTE     *");
 									System.out.println("**************************************************");
 									
 									break;
@@ -340,8 +351,10 @@ public class Practica1{
 							switch (filtroBusqueda) {
 								case 1:
 									System.out.println("1º - INTRODUCE NUEVA EDAD: ");
-									edades[posicionNombre] = entrada.nextInt();
+									
+									edadAux = entrada.nextInt();
 									entrada.nextLine();
+									edades[posicionNombre] = edadAux;
 									
 									System.out.println("*********************************");
 									System.out.println("* EDAD MODIFICADA CORRECTAMENTE *");
@@ -350,7 +363,6 @@ public class Practica1{
 									break;
 								case 2:
 									System.out.println("1º - INTRODUCE NUEVA LOCALIDAD: ");
-									entrada.nextLine();
 									
 									localidadAux= entrada.nextLine();
 									
@@ -358,7 +370,7 @@ public class Practica1{
 										System.out.println("* LA POBLACION YA TIENE ALCALDE: " + nombres[Funcionalidades.buscarArrayString(localidadAux,localidades)] + ". *");
 									}else {
 									
-										localidades[Funcionalidades.buscarArrayString(localidadAux, localidades)] = localidadAux;
+										localidades[posicionNombre] = localidadAux;
 										
 										System.out.println("*********************************************");
 										System.out.println("* NOMBRE LOCALIDAD MODIFICADO CORRECTAMENTE *");
@@ -369,25 +381,28 @@ public class Practica1{
 								case 3:
 									
 									System.out.println("1º - INTRODUCE NUEVA EDAD: ");
-									edades[posicionNombre] = entrada.nextInt();
+									
+									edadAux = entrada.nextInt();
 									entrada.nextLine();
+									edades[posicionNombre] = edadAux;
+									
+									System.out.println("*********************************");
+									System.out.println("* EDAD MODIFICADA CORRECTAMENTE *");
+									System.out.println("*********************************");
 									
 									System.out.println("2º - INTRODUCE NUEVA LOCALIDAD: ");
-									entrada.nextLine();
-									
 									localidadAux= entrada.nextLine();
 									
 									if (Funcionalidades.buscarArrayString(localidadAux, localidades) != -1) {
 										System.out.println("* LA POBLACION YA TIENE ALCALDE: " + nombres[Funcionalidades.buscarArrayString(localidadAux,localidades)] + ". *");
 									}else {
 									
-										localidades[Funcionalidades.buscarArrayString(localidadAux, localidades)] = localidadAux;
-									
+										localidades[posicionNombre] = localidadAux;
+										
+										System.out.println("*********************************************");
+										System.out.println("*      LOCALIDAD MODIFICADO CORRECTAMENTE   *");
+										System.out.println("*********************************************");
 									}
-									
-									System.out.println("**************************************************");
-									System.out.println("* NOMBRE Y EDAD ALCALDE MODIFICADO CORRECTAMENTE *");
-									System.out.println("**************************************************");
 									
 									break;
 								
