@@ -262,8 +262,10 @@ public class Practica1{
 							switch (filtroBusqueda) {
 								case 1:
 									System.out.println("1º - INTRODUCE NUEVA EDAD: ");
-									edades[posicionLocalidadAux] = entrada.nextInt();
+									
+									edadAux = entrada.nextInt();
 									entrada.nextLine();
+									edades[posicionLocalidadAux] = edadAux;
 									
 									System.out.println("*********************************");
 									System.out.println("* EDAD MODIFICADA CORRECTAMENTE *");
@@ -272,7 +274,6 @@ public class Practica1{
 									break;
 								case 2:
 									System.out.println("1º - INTRODUCE NOMBRE NUEVO ALCALDE: ");
-									entrada.nextLine();
 									
 									nombreAux= entrada.nextLine();
 									
@@ -280,7 +281,7 @@ public class Practica1{
 										System.out.println("* EL ALCALDE INTRODUCIDO YA ES ALCALDE DE " + nombres[Funcionalidades.buscarArrayString(nombreAux,nombres)]);
 									}else {
 									
-										nombres[posicionLocalidadAux] = entrada.nextLine();
+										nombres[posicionLocalidadAux] = nombreAux;
 										System.out.println("**************************************************");
 										System.out.println("*    NOMBRE ALCALDE MODIFICADO CORRECTAMENTE     *");
 										System.out.println("**************************************************");
@@ -357,7 +358,7 @@ public class Practica1{
 										System.out.println("* LA POBLACION YA TIENE ALCALDE: " + nombres[Funcionalidades.buscarArrayString(localidadAux,localidades)] + ". *");
 									}else {
 									
-										localidades[posicionNombre] = localidadAux;
+										localidades[Funcionalidades.buscarArrayString(localidadAux, localidades)] = localidadAux;
 										
 										System.out.println("*********************************************");
 										System.out.println("* NOMBRE LOCALIDAD MODIFICADO CORRECTAMENTE *");
@@ -380,7 +381,7 @@ public class Practica1{
 										System.out.println("* LA POBLACION YA TIENE ALCALDE: " + nombres[Funcionalidades.buscarArrayString(localidadAux,localidades)] + ". *");
 									}else {
 									
-										localidades[posicionNombre] = localidadAux;
+										localidades[Funcionalidades.buscarArrayString(localidadAux, localidades)] = localidadAux;
 									
 									}
 									
