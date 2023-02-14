@@ -55,10 +55,11 @@ public class Funcionalidades {
 			}else {
 				finArray = true;
 			}
+			
 			i++;
 			
 		}while(!encontrado && !finArray);
-		
+
 		return posicion;
 	}
 	
