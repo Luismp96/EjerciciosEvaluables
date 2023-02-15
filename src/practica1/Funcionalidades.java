@@ -116,21 +116,28 @@ public class Funcionalidades {
 			finDatos = true;
 		}
 		
-		do {
+		if (!finDatos) {
 			
-			arrayEntrada1[i] = arrayEntrada1[siguiente];
-			arrayEntrada2[i] = arrayEntrada2[siguiente];
-			arrayEntrada3[i] = arrayEntrada3[siguiente];
-			
-			i++;
-			siguiente ++;
-			
-			if (arrayEntrada1[siguiente] == null) {
-				finDatos = true;
-			}
-			
-		}while(!finDatos);
-	
+			do {
+				
+				arrayEntrada1[i] = arrayEntrada1[siguiente];
+				arrayEntrada2[i] = arrayEntrada2[siguiente];
+				arrayEntrada3[i] = arrayEntrada3[siguiente];
+				
+				arrayEntrada1[siguiente] = null;
+				arrayEntrada2[siguiente] = 0;
+				arrayEntrada3[siguiente] = null;
+				
+				i++;
+				siguiente ++;
+				
+				if (arrayEntrada1[siguiente] == null) {
+					finDatos = true;
+				}
+				
+			}while(!finDatos);
+		}
+		
 	}
 	
 	/** 
@@ -149,16 +156,18 @@ public class Funcionalidades {
 		int j = 0;
 		
 		do {
-			if (entradaArray[i] == entrada) {
-				resultado[j] = i;
-				j++;
-			}
-			
-			i++;
-			
-			if (entradaArray[i] == -1) {
+			if (entradaArray[i] != 0) {
+				
+				if (entradaArray[i] == entrada) {
+					resultado[j] = i;
+					j++;
+				}
+				
+				i++;
+			}else {
+
 				finArray = true;
-			}
+			}	
 			
 		}while(!finArray);
 		

@@ -172,26 +172,21 @@ public class Practica1{
 								
 								busquedaEdad = Funcionalidades.obtenerPosiciones(edadABuscar,edades);
 								
-								System.out.println(busquedaEdad[i]);
-								if (busquedaEdad[i] == -1) {
-									finBusqueda = true;
-								}
-								
 								if (!finBusqueda) {
 									System.out.println("* LOS SIGUIENTES ALCALDES TIENEN " + edadABuscar + " AÑOS: *");
+									
+									do {
+										
+										System.out.println(nombres[busquedaEdad[i]] + ": ALCADE DE " + localidades[busquedaEdad[i]]);
+										i++;
+										
+										if (busquedaEdad[i] == 0) {
+											finBusqueda = true;
+										}
+										
+										
+									}while(!finBusqueda);
 								}
-								
-								do {
-									
-									System.out.println(nombres[busquedaEdad[i]] + ": ALCADE DE " + localidades[busquedaEdad[i]]);
-									i++;
-									
-									if (busquedaEdad[i] == 0) {
-										finBusqueda = true;
-									}
-									
-									
-								}while(!finBusqueda);
 								
 							}else {
 								System.out.println("* NO HAY DATOS GUARDADOS *");
@@ -204,6 +199,7 @@ public class Practica1{
 							localidadABuscar = entrada.nextLine();
 
 							if (nombres[0] != null) {
+								
 								posicionLocalidad = Funcionalidades.buscarArrayString(localidadABuscar,localidades);
 								
 								if (posicionLocalidad != -1) {
@@ -278,7 +274,7 @@ public class Practica1{
 									nombreAux= entrada.nextLine();
 									
 									if (Funcionalidades.buscarArrayString(nombreAux, nombres) != -1) {
-										System.out.println("* EL ALCALDE INTRODUCIDO YA ES ALCALDE DE " + nombres[Funcionalidades.buscarArrayString(nombreAux,nombres)]);
+										System.out.println("* EL ALCALDE INTRODUCIDO YA ES ALCALDE DE " + localidades[Funcionalidades.buscarArrayString(nombreAux,nombres)] + ". INTRODUCE ALCALDE SIN CARGO EN OTRO AYUNTAMIENTO.");
 									}else {
 									
 										nombres[posicionLocalidadAux] = nombreAux;
