@@ -1,5 +1,6 @@
 package practica1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -32,6 +33,8 @@ public class Practica1{
 		boolean finBusqueda;
 		
 		int i=0;
+		int sumaEdades = 0;
+		float media = 0;
 		posicionLocalidad = -1;
 		
 		Scanner entrada = new Scanner(System.in);
@@ -125,12 +128,13 @@ public class Practica1{
 					
 				case 2:
 					
-					System.out.println("***********************************");
-					System.out.println("*        ¿QUE DESEA HACER?        *");
-					System.out.println("*  1 - BUSCAR POR NOMBRE ALCALDE. *");
-					System.out.println("*  2 - BUSCAR POR EDAD ALCALDE.   *");
-					System.out.println("*  3 - BUSCAR POR LOCALIDAD.      *");
-					System.out.println("***********************************");
+					System.out.println("********************************************");
+					System.out.println("*             ¿QUE DESEA HACER?            *");
+					System.out.println("*      1 - BUSCAR POR NOMBRE ALCALDE.      *");
+					System.out.println("*      2 - BUSCAR POR EDAD ALCALDE.        *");
+					System.out.println("*      3 - BUSCAR POR LOCALIDAD.           *");
+					System.out.println("*      4 - MEDIA EDAD ALCALDES.            *");
+					System.out.println("********************************************");
 					
 					filtroBusqueda = entrada.nextInt(); entrada.nextLine();
 								    
@@ -214,6 +218,19 @@ public class Practica1{
 							
 							break;
 							
+						case 4: 
+							
+							sumaEdades = Funcionalidades.sumaInt(edades);
+							guardados = Funcionalidades.contarGuardados(nombres);
+							
+							if (sumaEdades > 0 && guardados >0) {
+							
+								media = sumaEdades / guardados;
+							}
+							
+							System.out.println("LA MEDIA DE EDAD ES: " + media);
+							break;
+
 						default:
 							System.out.println("FILTRO DE BUSQUEDA INVALIDO.");
 					}

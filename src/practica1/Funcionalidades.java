@@ -175,4 +175,34 @@ public class Funcionalidades {
 		
 	}
 	
+	/** 
+	 * @author Luis Martin Portillo.
+	 * @param entradaArray - array con datos a sumar.
+	 * @return int - suma de todos los elementos el array.
+	 * @version 1.1.1
+	 */
+	
+	public static int sumaInt( int[] entradaArray) {
+		
+		int sumaInt = 0;
+		boolean finArray = false;
+		int i = 0;
+		
+		
+		if (entradaArray[i] <= 0){
+			finArray = true;
+		}
+		
+		while(!finArray) {
+			sumaInt = sumaInt + entradaArray[i];
+			i++;
+			
+			if (entradaArray[i] <= 0){
+				finArray = true;
+			}
+		}
+		
+		return sumaInt;
+	}
+	
 }
