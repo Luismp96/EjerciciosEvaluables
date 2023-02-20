@@ -23,14 +23,14 @@ public class Practica1{
 		String[] localidades = new String[20];
 		
 		int[] busquedaEdad = new int[20];
+		int[] edadesAux = new int[20];
 		
 		
-		int opcionMenu,guardados,edadAux,filtroBusqueda,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados,respuesta,posicionLocalidadAux,posicionAlcalde;
+		int opcionMenu,guardados,edadAux,filtroBusqueda,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados,respuesta,posicionLocalidadAux,posicionAlcalde,repetidos,x;
 		String nombreAux,localidadAux,nombreABuscar,localidadABuscar,localidadAModificar,localidadAEliminar,nombreAModificar,alcaldeAEliminar;
 		boolean fin=false;
 		
-		boolean duplicadoNombre, duplicadaLocalidad;
-		boolean finBusqueda;
+		boolean duplicadoNombre, duplicadaLocalidad,finBusqueda,finOrdenados,valido;
 		
 		int i=0;
 		int sumaEdades = 0;
@@ -63,6 +63,7 @@ public class Practica1{
 				case 1:
 					
 					guardados = Funcionalidades.contarGuardados(nombres);	
+					edadAux = 0;
 					
 					if (guardados < 20) {
 						
@@ -77,10 +78,21 @@ public class Practica1{
 						if (respuesta != -1) {
 							duplicadoNombre = true;
 						}
+						
+						valido = false;
+						
+						while(!valido) {
+							System.out.println("2º - INTRODUZCA SU EDAD: ");
+							edadAux = entrada.nextInt();
+							entrada.nextLine(); 
 							
-						System.out.println("2º - INTRODUZCA SU EDAD: ");
-						edadAux = entrada.nextInt();
-						entrada.nextLine(); 
+							if (edadAux <=0) {
+								System.out.println("* EDAD NO VALIDA. VUELVE A INTENTARLO. *");
+							}else {
+								valido = true;
+							}
+						}
+						
 							
 						System.out.println("3º - LOCALIDAD QUE GOBIERNA: ");
 						localidadAux = entrada.nextLine();
@@ -134,6 +146,8 @@ public class Practica1{
 					System.out.println("*      2 - BUSCAR POR EDAD ALCALDE.        *");
 					System.out.println("*      3 - BUSCAR POR LOCALIDAD.           *");
 					System.out.println("*      4 - MEDIA EDAD ALCALDES.            *");
+					System.out.println("*      5 - EDADES ALCALDES ORDENADAS DE    *");
+					System.out.println("*          MENOR A MAYOR.                  *");
 					System.out.println("********************************************");
 					
 					filtroBusqueda = entrada.nextInt(); entrada.nextLine();
@@ -230,9 +244,29 @@ public class Practica1{
 							
 							System.out.println("LA MEDIA DE EDAD ES: " + media);
 							break;
-
+						case 5:
+							
+							edadesAux = edades;
+							
+							Arrays.sort(edadesAux);
+							int cont = 0;
+				
+							for (int y = 0; y<edadesAux.length;y++) {
+								if (edadesAux[y] != 0) {
+									cont++;
+									System.out.print(edadesAux[y] + " - ");
+								}
+							}
+							
+							System.out.println();
+							if (cont == 0) {
+								System.out.println("* NO HAY DATOS QUE ORDENAR *");
+							}
+							
+							break;
 						default:
-							System.out.println("FILTRO DE BUSQUEDA INVALIDO.");
+							System.out.println("* FILTRO DE BUSQUEDA INVALIDO. *");
+							break;
 					}
 					
 				    
