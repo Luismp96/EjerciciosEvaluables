@@ -122,7 +122,6 @@ public class Practica1{
 								edades[guardados] = edadAux;
 								localidades[guardados] = localidadAux;
 								
-								
 								System.out.println("* --- ¡ALCALDE AÑADIDO CORRECTAMENTE! --- *");
 							}
 						}
@@ -548,7 +547,7 @@ public class Practica1{
 							System.out.println("*          REGISTRO BORRADO CORRECTAMENTE         *");
 							System.out.println("***************************************************");
 							
-							Funcionalidades.correrPosiciones(posicionLocalidad,nombres,edades,localidades);
+							Funcionalidades.correrPosiciones(posicionAlcalde,nombres,edades,localidades);
 							
 						}else {
 							System.out.println("* ALCALDE NO REGISTRADO: NO SE PUEDE ELIMINAR *");

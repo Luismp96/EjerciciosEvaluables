@@ -124,9 +124,9 @@ public class Funcionalidades {
 				arrayEntrada2[i] = arrayEntrada2[siguiente];
 				arrayEntrada3[i] = arrayEntrada3[siguiente];
 				
-				arrayEntrada1[siguiente] = null;
-				arrayEntrada2[siguiente] = 0;
-				arrayEntrada3[siguiente] = null;
+				arrayEntrada1[siguiente] = arrayEntrada1[siguiente+1];
+				arrayEntrada2[siguiente] = arrayEntrada2[siguiente+1];
+				arrayEntrada3[siguiente] = arrayEntrada3[siguiente+1];
 				
 				i++;
 				siguiente ++;
