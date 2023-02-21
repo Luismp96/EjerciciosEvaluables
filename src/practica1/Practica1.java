@@ -26,11 +26,11 @@ public class Practica1{
 		int[] edadesAux = new int[20];
 		
 		
-		int opcionMenu,guardados,edadAux,filtroBusqueda,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados,respuesta,posicionLocalidadAux,posicionAlcalde,repetidos,x;
+		int opcionMenu,posicionReal,guardados,edadAux,filtroBusqueda,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados,respuesta,posicionLocalidadAux,posicionAlcalde;
 		String nombreAux,localidadAux,nombreABuscar,localidadABuscar,localidadAModificar,localidadAEliminar,nombreAModificar,alcaldeAEliminar;
 		boolean fin=false;
 		
-		boolean duplicadoNombre, duplicadaLocalidad,finBusqueda,finOrdenados,valido;
+		boolean duplicadoNombre, duplicadaLocalidad,finBusqueda,valido;
 		
 		int i=0;
 		int sumaEdades = 0;

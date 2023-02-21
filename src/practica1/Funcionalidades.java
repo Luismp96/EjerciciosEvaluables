@@ -20,12 +20,12 @@ public class Funcionalidades {
 		
 		int i=0;
 		
-		do {
+		for (int j=0;j<entrada.length;j++) {
 			if(entrada[i] != null) {
 				i++;
 			}
-		}while(entrada[i] != null && i<20);
-			
+		}
+		
 		return i;
 	}
 	
@@ -108,34 +108,20 @@ public class Funcionalidades {
 		
 		boolean finDatos = false;
 		
-		int i = posicionOrigen;		
-		int siguiente = i + 1;
+		int siguiente = posicionOrigen + 1;
 		
 		
-		if (arrayEntrada1[siguiente] == null) {
-			finDatos = true;
-		}
-		
-		if (!finDatos) {
-			
-			do {
-				
+		for (int i = posicionOrigen; i < arrayEntrada1.length; i++) {
+			if (siguiente < 20) {
 				arrayEntrada1[i] = arrayEntrada1[siguiente];
 				arrayEntrada2[i] = arrayEntrada2[siguiente];
 				arrayEntrada3[i] = arrayEntrada3[siguiente];
-				
-				arrayEntrada1[siguiente] = arrayEntrada1[siguiente+1];
-				arrayEntrada2[siguiente] = arrayEntrada2[siguiente+1];
-				arrayEntrada3[siguiente] = arrayEntrada3[siguiente+1];
-				
-				i++;
-				siguiente ++;
-				
-				if (arrayEntrada1[siguiente] == null) {
-					finDatos = true;
-				}
-				
-			}while(!finDatos);
+				siguiente++;
+			}else if (siguiente == 20) {
+				arrayEntrada1[i] = null;
+				arrayEntrada2[i] = 0;
+				arrayEntrada3[i] = null;
+			}
 		}
 		
 	}
