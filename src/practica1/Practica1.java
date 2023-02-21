@@ -245,7 +245,11 @@ public class Practica1{
 							break;
 						case 5:
 							
-							edadesAux = edades;
+							edadesAux = new int[20];
+							
+							for(int r=0; r<edades.length; r++) {
+								edadesAux[r] = edades[r];
+							}
 							
 							Arrays.sort(edadesAux);
 							int cont = 0;
