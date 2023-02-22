@@ -138,17 +138,17 @@ public class Funcionalidades {
 		
 		int[] resultado = new int[20];
 		boolean finArray = false;
+		
 		int i = 0;
 		int j = 0;
 		
 		do {
 			if (entradaArray[i] != 0) {
-				
 				if (entradaArray[i] == entrada) {
 					resultado[j] = i;
 					j++;
 				}
-				
+				resultado[j] = -1;
 				i++;
 			}else {
 

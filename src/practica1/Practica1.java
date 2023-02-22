@@ -26,7 +26,7 @@ public class Practica1{
 		int[] edadesAux = new int[20];
 		
 		
-		int opcionMenu,posicionReal,guardados,edadAux,filtroBusqueda,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados,respuesta,posicionLocalidadAux,posicionAlcalde;
+		int opcionMenu,guardados,edadAux,filtroBusqueda,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados,respuesta,posicionLocalidadAux,posicionAlcalde,cont;
 		String nombreAux,localidadAux,nombreABuscar,localidadABuscar,localidadAModificar,localidadAEliminar,nombreAModificar,alcaldeAEliminar;
 		boolean fin=false;
 		
@@ -48,9 +48,7 @@ public class Practica1{
 			System.out.println("*****     2 - BUSCAR POR ALCALDE/EDAD/LOCALIDAD.        *****");
 			System.out.println("*****     3 - MODIFICAR POR ALCALDE/LOCALIDAD.          *****");
 			System.out.println("*****     4 - ELIMINAR REGISTRO POR LOCALIDAD/ALCALDE.   *****");
-			System.out.println("*****     5 - CONSULTAR LISTA ALCALDES Y POBLACION      *****");
-			System.out.println("*****         DONDE GOBIERNA.                           *****");
-			System.out.println("*****     6 - SALIR.                                    *****");
+			System.out.println("*****     5 - SALIR.                                    *****");
 			System.out.println("*************************************************************");
 			
 			opcionMenu=entrada.nextInt();
@@ -147,6 +145,8 @@ public class Practica1{
 					System.out.println("*      4 - MEDIA EDAD ALCALDES.            *");
 					System.out.println("*      5 - EDADES ALCALDES ORDENADAS DE    *");
 					System.out.println("*          MENOR A MAYOR.                  *");
+					System.out.println("*      6 - CONSULTAR LISTA ALCALDES Y      *");
+					System.out.println("*          POBLACION DONDE GOBIERNA.       *");
 					System.out.println("********************************************");
 					
 					filtroBusqueda = entrada.nextInt(); entrada.nextLine();
@@ -178,8 +178,6 @@ public class Practica1{
 							break;
 						case 2:
 							
-							finBusqueda = false;
-							i = 0;
 							
 							if (edades[0] != 0) {
 								
@@ -188,28 +186,23 @@ public class Practica1{
 								entrada.nextLine();
 								
 								busquedaEdad = Funcionalidades.obtenerPosiciones(edadABuscar,edades);
+								int posicion = 0;
 								
-								if (!finBusqueda) {
-									System.out.println("* LOS SIGUIENTES ALCALDES TIENEN " + edadABuscar + " AÑOS: *");
-									
-									do {
-										
-										System.out.println(nombres[busquedaEdad[i]] + ": ALCADE DE " + localidades[busquedaEdad[i]]);
-										i++;
-										
-										if (busquedaEdad[i] == 0) {
-											finBusqueda = true;
-										}
-										
-										
-									}while(!finBusqueda);
+								while(busquedaEdad[posicion] != -1) {
+									System.out.println(nombres[busquedaEdad[posicion]] + ": ALCADE DE " + localidades[busquedaEdad[posicion]]);
+									posicion++;
 								}
 								
-							}else {
+								if (posicion == 0) {
+									System.out.println("* NO HAY NINGUN ALCALDE CON " + edadABuscar + " AÑOS. *");
+								}
+								
+							}else{
 								System.out.println("* NO HAY DATOS GUARDADOS *");
-							}
+							}					
 							
 							break;
+							
 						case 3:
 							
 							System.out.println("1º - LOCALIDAD POR LA QUE BUSCAR: ");
@@ -252,7 +245,7 @@ public class Practica1{
 							}
 							
 							Arrays.sort(edadesAux);
-							int cont = 0;
+							cont = 0;
 				
 							for (int y = 0; y<edadesAux.length;y++) {
 								if (edadesAux[y] != 0) {
@@ -264,6 +257,24 @@ public class Practica1{
 							System.out.println();
 							if (cont == 0) {
 								System.out.println("* NO HAY DATOS QUE ORDENAR *");
+							}
+							
+							break;
+						case 6:
+							numeroGuardados = Funcionalidades.contarGuardados(nombres);
+							
+							System.out.println("*------------------------------");
+							System.out.println("* LISTA DE ALCALDES GUARDADOS *");
+							System.out.println("*------------------------------");
+							
+							if (numeroGuardados != 0) {
+								for (i=0;i<numeroGuardados;i++) {
+									System.out.println(nombres[i] + " | " + edades[i] + " AÑOS | GOBIERNA EN: " + localidades[i] + ".");
+								}
+							}else {
+								System.out.println("*******************************");
+								System.out.println("* NO HAY ALCALDES EN LA LISTA *");
+								System.out.println("*******************************");
 							}
 							
 							break;
@@ -566,31 +577,9 @@ public class Practica1{
 					}
 					
 					break;
-					
-				/************************************************* CONTENIDO ARRAY ******************************************************/
-					
-				case 5:
-					
-					numeroGuardados = Funcionalidades.contarGuardados(nombres);
-					
-					System.out.println("*------------------------------");
-					System.out.println("* LISTA DE ALCALDES GUARDADOS *");
-					System.out.println("*------------------------------");
-					
-					if (numeroGuardados != 0) {
-						for (i=0;i<numeroGuardados;i++) {
-							System.out.println(nombres[i] + " | " + edades[i] + " AÑOS | GOBIERNA EN: " + localidades[i] + ".");
-						}
-					}else {
-						System.out.println("*******************************");
-						System.out.println("* NO HAY ALCALDES EN LA LISTA *");
-						System.out.println("*******************************");
-					}
-					
-					break;
-				
+
 				/************************************************* OPCION FIN ******************************************************/
-				case 6:
+				case 5:
 					fin = true;
 					break;
 					
