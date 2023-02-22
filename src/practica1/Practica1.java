@@ -2,7 +2,7 @@ package practica1;
 
 import java.util.Arrays;
 import java.util.Scanner;
-
+import java.util.InputMismatchException;
 /**
  * @author Luis Martin Portillo.
  * @version 1.1.1
@@ -30,7 +30,7 @@ public class Practica1{
 		String nombreAux,localidadAux,nombreABuscar,localidadABuscar,localidadAModificar,localidadAEliminar,nombreAModificar,alcaldeAEliminar;
 		boolean fin=false;
 		
-		boolean duplicadoNombre, duplicadaLocalidad,finBusqueda,valido;
+		boolean duplicadoNombre, duplicadaLocalidad,valido;
 		
 		int i=0;
 		int sumaEdades = 0;
@@ -67,6 +67,7 @@ public class Practica1{
 						
 						duplicadoNombre = false;
 						duplicadaLocalidad = false;
+						valido=false;
 						
 						System.out.println("1º - NOMBRE DEL ALCADE A AÑADIR: ");
 						nombreAux = entrada.nextLine();
@@ -77,19 +78,24 @@ public class Practica1{
 							duplicadoNombre = true;
 						}
 						
-						valido = false;
 						
-						while(!valido) {
-							System.out.println("2º - INTRODUZCA SU EDAD: ");
-							edadAux = entrada.nextInt();
-							entrada.nextLine(); 
+						do {
 							
-							if (edadAux <=0) {
-								System.out.println("* EDAD NO VALIDA. VUELVE A INTENTARLO. *");
-							}else {
-								valido = true;
+							try {
+								System.out.println("2º - INTRODUZCA SU EDAD: ");
+								edadAux = entrada.nextInt();
+								entrada.nextLine(); 
+							
+								if (edadAux <=0) {
+									System.out.println("* EDAD NO VALIDA. VUELVE A INTENTARLO. *");
+								}else {
+									valido = true;
+								}
+							}catch(InputMismatchException e) {
+								System.out.println("* LA EDAD DEBE DE SER NUMERICA *");
+								entrada.nextLine(); 
 							}
-						}
+						}while(!valido);
 						
 							
 						System.out.println("3º - LOCALIDAD QUE GOBIERNA: ");
@@ -137,20 +143,34 @@ public class Practica1{
 					
 				case 2:
 					
-					System.out.println("********************************************");
-					System.out.println("*             ¿QUE DESEA HACER?            *");
-					System.out.println("*      1 - BUSCAR POR NOMBRE ALCALDE.      *");
-					System.out.println("*      2 - BUSCAR POR EDAD ALCALDE.        *");
-					System.out.println("*      3 - BUSCAR POR LOCALIDAD.           *");
-					System.out.println("*      4 - MEDIA EDAD ALCALDES.            *");
-					System.out.println("*      5 - EDADES ALCALDES ORDENADAS DE    *");
-					System.out.println("*          MENOR A MAYOR.                  *");
-					System.out.println("*      6 - CONSULTAR LISTA ALCALDES Y      *");
-					System.out.println("*          POBLACION DONDE GOBIERNA.       *");
-					System.out.println("********************************************");
+					valido=false;
+					filtroBusqueda = 0;
 					
-					filtroBusqueda = entrada.nextInt(); entrada.nextLine();
-								    
+					do {
+						try {
+							System.out.println("********************************************");
+							System.out.println("*             ¿QUE DESEA HACER?            *");
+							System.out.println("*      1 - BUSCAR POR NOMBRE ALCALDE.      *");
+							System.out.println("*      2 - BUSCAR POR EDAD ALCALDE.        *");
+							System.out.println("*      3 - BUSCAR POR LOCALIDAD.           *");
+							System.out.println("*      4 - MEDIA EDAD ALCALDES.            *");
+							System.out.println("*      5 - EDADES ALCALDES ORDENADAS DE    *");
+							System.out.println("*          MENOR A MAYOR.                  *");
+							System.out.println("*      6 - CONSULTAR LISTA ALCALDES Y      *");
+							System.out.println("*          POBLACION DONDE GOBIERNA.       *");
+							System.out.println("********************************************");
+						
+							filtroBusqueda = entrada.nextInt(); 
+							entrada.nextLine();
+							valido = true;
+							
+						}catch(InputMismatchException e){
+							System.out.println("* LA OPCION DEBE SER NUMERICA. INTENTELO DE NUEVO*");
+							entrada.nextLine();
+						}
+						
+					}while(!valido);	
+					
 					switch(filtroBusqueda) {
 						case 1:
 							
