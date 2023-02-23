@@ -26,7 +26,7 @@ public class Practica1{
 		int[] edadesAux = new int[20];
 		
 		
-		int opcionMenu,guardados,edadAux,filtroBusqueda,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados,respuesta,posicionLocalidadAux,posicionAlcalde,cont;
+		int opcionMenu,guardados,edadAux,filtroBusqueda,posicionLocalidad,edadABuscar,posicionNombre,numeroGuardados,respuesta,posicionLocalidadAux,posicionAlcalde,cont,posicion;
 		String nombreAux,localidadAux,nombreABuscar,localidadABuscar,localidadAModificar,localidadAEliminar,nombreAModificar,alcaldeAEliminar;
 		boolean fin=false;
 		
@@ -206,7 +206,8 @@ public class Practica1{
 								entrada.nextLine();
 								
 								busquedaEdad = Funcionalidades.obtenerPosiciones(edadABuscar,edades);
-								int posicion = 0;
+								
+								posicion = 0;
 								
 								while(busquedaEdad[posicion] != -1) {
 									System.out.println(nombres[busquedaEdad[posicion]] + ": ALCADE DE " + localidades[busquedaEdad[posicion]]);
@@ -226,6 +227,7 @@ public class Practica1{
 						case 3:
 							
 							System.out.println("1º - LOCALIDAD POR LA QUE BUSCAR: ");
+							
 							localidadABuscar = entrada.nextLine();
 
 							if (nombres[0] != null) {
@@ -238,6 +240,7 @@ public class Practica1{
 								}else {
 									System.out.println("* NO HAY ALCALDE ELEGIDO EN " + localidadABuscar + ".");
 								}
+								
 							}else {
 								System.out.println("* NO HAY DATOS GUARDADOS. *");
 							}
@@ -255,16 +258,16 @@ public class Practica1{
 							}
 							
 							System.out.println("LA MEDIA DE EDAD ES: " + media);
+							
 							break;
 						case 5:
-							
-							edadesAux = new int[20];
 							
 							for(int r=0; r<edades.length; r++) {
 								edadesAux[r] = edades[r];
 							}
 							
 							Arrays.sort(edadesAux);
+							
 							cont = 0;
 				
 							for (int y = 0; y<edadesAux.length;y++) {
@@ -281,16 +284,20 @@ public class Practica1{
 							
 							break;
 						case 6:
+							
 							numeroGuardados = Funcionalidades.contarGuardados(nombres);
 							
-							System.out.println("*------------------------------");
+							System.out.println("*-----------------------------*");
 							System.out.println("* LISTA DE ALCALDES GUARDADOS *");
-							System.out.println("*------------------------------");
+							System.out.println("*-----------------------------*");
 							
 							if (numeroGuardados != 0) {
 								for (i=0;i<numeroGuardados;i++) {
 									System.out.println(nombres[i] + " | " + edades[i] + " AÑOS | GOBIERNA EN: " + localidades[i] + ".");
 								}
+								System.out.println("*-----------------------------*");
+								System.out.println("* TOTAL ALCALDES GUARDADOS: " + numeroGuardados);
+								System.out.println("*-----------------------------*");
 							}else {
 								System.out.println("*******************************");
 								System.out.println("* NO HAY ALCALDES EN LA LISTA *");
@@ -298,6 +305,7 @@ public class Practica1{
 							}
 							
 							break;
+							
 						default:
 							System.out.println("* FILTRO DE BUSQUEDA INVALIDO. *");
 							break;
@@ -318,7 +326,8 @@ public class Practica1{
 					System.out.println("                                           ");
 					System.out.println("*******************************************");
 					
-					opcionMenu = entrada.nextInt();entrada.nextLine();
+					opcionMenu = entrada.nextInt();
+					entrada.nextLine();
 					
 					switch (opcionMenu) {
 					
@@ -338,7 +347,8 @@ public class Practica1{
 							System.out.println("*              3 - AMBAS.                        *");
 							System.out.println("**************************************************");
 							
-							filtroBusqueda = entrada.nextInt();entrada.nextLine();
+							filtroBusqueda = entrada.nextInt();
+							entrada.nextLine();
 							
 							switch (filtroBusqueda) {
 								case 1:
@@ -346,6 +356,7 @@ public class Practica1{
 									
 									edadAux = entrada.nextInt();
 									entrada.nextLine();
+									
 									edades[posicionLocalidadAux] = edadAux;
 									
 									System.out.println("*********************************");
@@ -387,6 +398,7 @@ public class Practica1{
 									System.out.println("2º - INTRODUCE NUEVA EDAD: ");
 									edadAux = entrada.nextInt();
 									entrada.nextLine();
+									
 									edades[posicionLocalidadAux] = edadAux;
 									
 									System.out.println("**************************************************");

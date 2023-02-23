@@ -106,10 +106,7 @@ public class Funcionalidades {
 	
 	public static void correrPosiciones(int posicionOrigen,String[] arrayEntrada1,int[] arrayEntrada2,String[] arrayEntrada3) {
 		
-		boolean finDatos = false;
-		
 		int siguiente = posicionOrigen + 1;
-		
 		
 		for (int i = posicionOrigen; i < arrayEntrada1.length; i++) {
 			if (siguiente < 20) {
@@ -170,8 +167,8 @@ public class Funcionalidades {
 	
 	public static int sumaInt( int[] entradaArray) {
 		
-		int sumaInt = 0;
 		boolean finArray = false;
+		int sumaInt = 0;
 		int i = 0;
 		
 		
