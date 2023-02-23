@@ -45,9 +45,9 @@ public class Practica1{
 			System.out.println("**************************** MENU ***************************");
 			System.out.println("*************************************************************");
 			System.out.println("*****     1 - AÑADIR NUEVO ALCALDE.                     *****");
-			System.out.println("*****     2 - BUSCAR POR ALCALDE/EDAD/LOCALIDAD.        *****");
+			System.out.println("*****     2 - REALIZAR CONSULTAS.                       *****");
 			System.out.println("*****     3 - MODIFICAR POR ALCALDE/LOCALIDAD.          *****");
-			System.out.println("*****     4 - ELIMINAR REGISTRO POR LOCALIDAD/ALCALDE.   *****");
+			System.out.println("*****     4 - ELIMINAR REGISTRO POR ALCALDE/LOCALIDAD.  *****");
 			System.out.println("*****     5 - SALIR.                                    *****");
 			System.out.println("*************************************************************");
 			
@@ -318,13 +318,13 @@ public class Practica1{
 				/********************************************** BLOQUE MODIFICACION ***************************************************************/
 					
 				case 3:
-					System.out.println("*******************************************");
-					System.out.println("            ¿QUE OPCION DESEA?             ");
-					System.out.println("                                           ");
-					System.out.println("   1 - MODIFICACION POR LOCALIDAD.         ");
-					System.out.println("   2 - MODIFICACION POR NOMBRE DEL ALCALDE.");
-					System.out.println("                                           ");
-					System.out.println("*******************************************");
+					System.out.println("**********************************************");
+					System.out.println("*            ¿QUE OPCION DESEA?              *");
+					System.out.println("*                                            *");
+					System.out.println("*   1 - MODIFICACION POR LOCALIDAD.          *");
+					System.out.println("*   2 - MODIFICACION POR NOMBRE DEL ALCALDE. *");
+					System.out.println("*                                            *");
+					System.out.println("**********************************************");
 					
 					opcionMenu = entrada.nextInt();
 					entrada.nextLine();
@@ -531,13 +531,13 @@ public class Practica1{
 					
 				case 4:
 					
-					System.out.println("*******************************************");
-					System.out.println("        ¿QUE REGISTRO DESEA BORRAR?        ");
-					System.out.println("                                           ");
-					System.out.println("   1 - ELIMINAR POR LOCALIDAD.             ");
-					System.out.println("   2 - ELIMINAR POR NOMBRE DEL ALCALDE.    ");
-					System.out.println("                                           ");
-					System.out.println("*******************************************");
+					System.out.println("*********************************************");
+					System.out.println("*        ¿QUE REGISTRO DESEA BORRAR?        *");
+					System.out.println("*                                           *");
+					System.out.println("*   1 - ELIMINAR POR LOCALIDAD.             *");
+					System.out.println("*   2 - ELIMINAR POR NOMBRE DEL ALCALDE.    *");
+					System.out.println("*                                           *");
+					System.out.println("*********************************************");
 					
 					opcionMenu = entrada.nextInt();
 					entrada.nextLine();
