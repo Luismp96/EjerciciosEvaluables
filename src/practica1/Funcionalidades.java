@@ -41,7 +41,7 @@ public class Funcionalidades {
 	public static int buscarArrayString(String entrada, String[] entradaArray) {
 		
 		boolean encontrado = false;
-		boolean finArray = false;
+		
 		int posicion = -1;
 		int i = 0;
 		
@@ -52,13 +52,11 @@ public class Funcionalidades {
 					posicion= i;
 					encontrado = true;
 				}
-			}else {
-				finArray = true;
 			}
 			
 			i++;
 			
-		}while(!encontrado && !finArray);
+		}while(!encontrado && i<20);
 
 		return posicion;
 	}
@@ -176,7 +174,7 @@ public class Funcionalidades {
 			finArray = true;
 		}
 		
-		while(!finArray) {
+		while(!finArray && i<20) {
 			sumaInt = sumaInt + entradaArray[i];
 			i++;
 			
