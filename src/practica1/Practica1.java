@@ -60,7 +60,9 @@ public class Practica1{
 			
 				case 1:
 					
+					//* CONTAMOS GUARDADOS PARA CONTROLAR EL MAXIMO DE 20 ALCALDES GUARDADOS
 					guardados = Funcionalidades.contarGuardados(nombres);	
+					
 					edadAux = 0;
 					
 					if (guardados < 20) {
@@ -72,12 +74,14 @@ public class Practica1{
 						System.out.println("1º - NOMBRE DEL ALCADE A AÑADIR: ");
 						nombreAux = entrada.nextLine();
 							
+						//*COMPROBAMOS SI EL NOMBRE INTRODUCIDO ESTA GUARDADO YA O NO. EN CASO AFIRMATIVO, EL BOOLEANO DUPLICADO PASA A SER TRUE
 						respuesta = Funcionalidades.buscarArrayString(nombreAux, nombres);
 							
 						if (respuesta != -1) {
 							duplicadoNombre = true;
 						}
 						
+						//*PEDIREMOS LA EDAD. ACEPTAREMOS SOLO UN ENTERO. EN CASO CONTRARIO SE LANZA LA EXCEPCION DE TIPO DE DATO INVALIDO
 						
 						do {
 							
@@ -101,6 +105,8 @@ public class Practica1{
 						System.out.println("3º - LOCALIDAD QUE GOBIERNA: ");
 						localidadAux = entrada.nextLine();
 							
+						//*BUSCAMOS LA LOCALIDAD DENTRO DE SU ARRAY, PONIENDO A TRUE EL BOOLEANO DE DUPLICADO EN CASO DE ENCONTRARLO
+						
 						respuesta = Funcionalidades.buscarArrayString(localidadAux, localidades);
 							
 						if (respuesta != -1) {
@@ -108,6 +114,8 @@ public class Practica1{
 						}
 							
 							
+						//*CONTROLAMOS LAS VALIDACIONES
+						
 						if (duplicadoNombre) {
 							System.out.println("*****************************************************");
 							System.out.println("* ALCALDE INTRODUCIDO YA GOBIERNA EN OTRA LOCALIDAD *");
@@ -121,6 +129,8 @@ public class Practica1{
 								System.out.println("*   NO SE PUEDE DAR DE ALTA   *");
 								System.out.println("*******************************");
 							}else {
+								
+								//* SI SE HAN VALIDADO LOS DATOS, SE GUARDA
 								
 								nombres[guardados] = nombreAux;
 								edades[guardados] = edadAux;
@@ -147,6 +157,8 @@ public class Practica1{
 					filtroBusqueda = 0;
 					
 					do {
+						
+						//* MOSTRAMOS EL MENU SIEMPRE Y CUANDO NO METAN UN DATO NUMERICO PARA SELECCIONAR LA OPCION
 						try {
 							System.out.println("********************************************");
 							System.out.println("*             ¿QUE DESEA HACER?            *");
@@ -171,6 +183,8 @@ public class Practica1{
 						
 					}while(!valido);	
 					
+					//*DEPENDIENDO DE LA OPCION SELECCIONADA, HAREMOS UN CASE U OTRO.
+					
 					switch(filtroBusqueda) {
 						case 1:
 							
@@ -178,6 +192,8 @@ public class Practica1{
 								
 								System.out.println("1º - NOMBRE DEL ALCADE A BUSCAR: ");
 								nombreABuscar = entrada.nextLine();
+								
+								//*BUSCAMOS EL NOMBRE INTRODUCIDO Y SI NOS DEVUELVE DISTINTO DE -1, SIGNIFICARA QUE NO LO ENCUENTRA
 								
 								posicionNombre = Funcionalidades.buscarArrayString(nombreABuscar,nombres);
 								
@@ -205,9 +221,13 @@ public class Practica1{
 								edadABuscar = entrada.nextInt();
 								entrada.nextLine();
 								
+								//*BUSCAMOS EN EL ARRAY DE EDADES LA EDAD INTRODUCIDA. SI ESTA RELLENO EL ARRAY DE SALIDA, SE MUESTRAN TODOS LOS ALCALDES CON ESA EDAD.
+								
 								busquedaEdad = Funcionalidades.obtenerPosiciones(edadABuscar,edades);
 								
 								posicion = 0;
+								
+								//* RECORRERMOS ARRAY DE SALIDA DEL METODO EN CASO DE HABER DATOS
 								
 								while(busquedaEdad[posicion] != -1) {
 									System.out.println(nombres[busquedaEdad[posicion]] + ": ALCADE DE " + localidades[busquedaEdad[posicion]]);
@@ -228,11 +248,15 @@ public class Practica1{
 							
 							System.out.println("1º - LOCALIDAD POR LA QUE BUSCAR: ");
 							
-							localidadABuscar = entrada.nextLine();
+							localidadABuscar = entrada.nextLine();							
 
 							if (nombres[0] != null) {
 								
+								//*BUSCAMOS EN EL ARRAY DE LOCALIDADES LA LOCALIDAD INTRODUCIDA. SI ESTA RELLENO EL ARRAY DE SALIDA, SE MUESTRAN TODOS LOS ALCALDES CON ESA EDAD.
+								
 								posicionLocalidad = Funcionalidades.buscarArrayString(localidadABuscar,localidades);
+								
+								//*EN CASO DE DEVOLVER POSICION, SE MUESTRA
 								
 								if (posicionLocalidad != -1) {
 									System.out.println("* LOCALIDAD ENCONTRADA *");
@@ -249,6 +273,9 @@ public class Practica1{
 							
 						case 4: 
 							
+							
+							//*METODOS PARA SUMAR ARRAY DE EDADES Y CONTAR GUARDADOS.
+							//*SE CALCULA LA MEDIA SIEMPRE Y CUANDO AMBOS VALORES >0
 							sumaEdades = Funcionalidades.sumaInt(edades);
 							guardados = Funcionalidades.contarGuardados(nombres);
 							
@@ -262,10 +289,12 @@ public class Practica1{
 							break;
 						case 5:
 							
+							//*GRABAMOS DATOS DEL ARRAY DE EDADES A UN AUXILIAR, QUE SERA EL UTILIZADO.
 							for(int r=0; r<edades.length; r++) {
 								edadesAux[r] = edades[r];
 							}
 							
+							//METODO PARA ORDENAR ARRAY AUXILIAR
 							Arrays.sort(edadesAux);
 							
 							cont = 0;
@@ -285,11 +314,15 @@ public class Practica1{
 							break;
 						case 6:
 							
+							
+							//*OBTENEMOS NUMERO DE DATOS GUARDADOS
 							numeroGuardados = Funcionalidades.contarGuardados(nombres);
 							
 							System.out.println("*-----------------------------*");
 							System.out.println("* LISTA DE ALCALDES GUARDADOS *");
 							System.out.println("*-----------------------------*");
+							
+							//*SI HAY GUARDADOS, SE MUESTRA CADA UNO DE ELLOS.
 							
 							if (numeroGuardados != 0) {
 								for (i=0;i<numeroGuardados;i++) {
@@ -336,6 +369,8 @@ public class Practica1{
 						
 						localidadAModificar = entrada.nextLine();
 						
+						//*OBTENEMOS POSICION DE LA LOCALIDAD EN EL ARRAY, Y EN CASO DE ENCONTRARSE SE PODRÁ MODIFICAR, SI NO NO.
+						
 						posicionLocalidadAux = Funcionalidades.buscarArrayString(localidadAModificar, localidades);
 						
 						if (posicionLocalidadAux != -1) {
@@ -357,6 +392,8 @@ public class Practica1{
 									edadAux = entrada.nextInt();
 									entrada.nextLine();
 									
+									//*EN LA POSICION OBTENIDA, ASIGNAMOS EL VALOR AUXILIAR DE LA EDAD
+									
 									edades[posicionLocalidadAux] = edadAux;
 									
 									System.out.println("*********************************");
@@ -369,10 +406,12 @@ public class Practica1{
 									
 									nombreAux= entrada.nextLine();
 									
+									//SI EL ALCALDE YA ESTA GUARDADO, SE INFORMA.
+									
 									if (Funcionalidades.buscarArrayString(nombreAux, nombres) != -1) {
 										System.out.println("* EL ALCALDE INTRODUCIDO YA ES ALCALDE DE " + localidades[Funcionalidades.buscarArrayString(nombreAux,nombres)] + ". INTRODUCE ALCALDE SIN CARGO EN OTRO AYUNTAMIENTO.");
 									}else {
-									
+									    //* SI NO, SE MODIFICA EN LA POSICION OBTENIDA
 										nombres[posicionLocalidadAux] = nombreAux;
 										System.out.println("**************************************************");
 										System.out.println("*    NOMBRE ALCALDE MODIFICADO CORRECTAMENTE     *");
@@ -382,6 +421,8 @@ public class Practica1{
 									break;
 								case 3:
 									
+									
+									//SE JUNTAN LAS DOS MODIFICACIONES ANTERIORES (NOMBRE Y EDAD)
 									System.out.println("1ª - INTRODUCE NOMBRE NUEVO ALCALDE: ");
 									nombreAux= entrada.nextLine();
 									
@@ -424,11 +465,15 @@ public class Practica1{
 						break;
 						
 					case 2:
+						
+						// SI SE MODIFICA POR NOMBRE, ES IGUAL QUE POR LOCALIDADES PERO CAMBIANDO LOS OTROS DOS ATRIBUTOS RESTANTES
 						System.out.println("¿QUE ALCALDE DESEA MODIFICAR?");
 						
 						nombreAModificar = entrada.nextLine();
 						
 						posicionNombre = Funcionalidades.buscarArrayString(nombreAModificar, nombres);
+						
+						//* SI ENCUENTRA EL NOMBRE SE PUEDE MODIFICAR DEPENDIENDO DE LA OPCION
 						
 						if (posicionNombre != -1) {
 							
@@ -445,6 +490,7 @@ public class Practica1{
 								case 1:
 									System.out.println("1º - INTRODUCE NUEVA EDAD: ");
 									
+									//* EN LA POSICION DONDE SE HA ENCONTRADO EL NOMBRE, SE MODIFICA LA EDAD EN SU ARRAY
 									edadAux = entrada.nextInt();
 									entrada.nextLine();
 									edades[posicionNombre] = edadAux;
@@ -457,6 +503,8 @@ public class Practica1{
 								case 2:
 									System.out.println("1º - INTRODUCE NUEVA LOCALIDAD: ");
 									
+									
+									//* EN LA POSICION DONDE SE HA ENCONTRADO LA NOMBRE, SE MODIFICA LA LOCALIDAD EN SU ARRAY SIEMPRE Y CUANDO NO ESTE YA GUARDADA.
 									localidadAux= entrada.nextLine();
 									
 									if (Funcionalidades.buscarArrayString(localidadAux, localidades) != -1) {
@@ -472,6 +520,8 @@ public class Practica1{
 									
 									break;
 								case 3:
+									
+									//*LAS DOS OPCIONES ANTERIORES UNIDAS PARA PODER MODIFICAR AMBOS DATOS A LA VEZ.
 									
 									System.out.println("1º - INTRODUCE NUEVA EDAD: ");
 									
@@ -545,6 +595,8 @@ public class Practica1{
 					
 					switch(opcionMenu) {
 					case 1:
+						
+						//* OPCION 1 - SI ENCUENTRA LA LOCALIDAD A ELIMINAR, SE PODRA ELIMINAR EN ESA POSICION OBTENIDA EN CADA UNO DE LOS ARRAYS
 						System.out.println("¿QUE LOCALIDAD QUIERE ELIMINAR?");
 						localidadAEliminar = entrada.nextLine();
 						
@@ -556,6 +608,8 @@ public class Practica1{
 							System.out.println("*          LOCALIDAD A ELIMINAR ENCONTRADA..      *");
 							System.out.println("*             ELIMINANDO REGISTRO...              *");
 							
+							
+							//* SE INICIALIZAN LOS ARRAYS EN LA POSICION DONDE SE ENCUENTRE LA LOCALIDAD BUSCADA
 							nombres[posicionLocalidad] = null;
 							edades[posicionLocalidad] = 0;
 							localidades[posicionLocalidad] = null;
@@ -574,7 +628,7 @@ public class Practica1{
 						break;
 						
 					case 2:
-						
+						//* OPCION 2 - SI ENCUENTRA EL ALCALDE A ELIMINAR, SE PODRA ELIMINAR EN ESA POSICION OBTENIDA EN CADA UNO DE LOS ARRAYS
 						System.out.println("¿QUE ALCALDE QUIERE ELIMINAR?");
 						alcaldeAEliminar = entrada.nextLine();
 						
@@ -586,6 +640,7 @@ public class Practica1{
 							System.out.println("*         ALCALDE A ELIMINAR ENCONTRADO..         *");
 							System.out.println("*              ELIMINANDO REGISTRO...             *");        
 							
+							//* SE INICIALIZAN LOS ARRAYS EN LA POSICION DONDE SE ENCUENTRE EL ALCALDE BUSCADO
 							nombres[posicionAlcalde] = null;
 							edades[posicionAlcalde] = 0;
 							localidades[posicionAlcalde] = null;
@@ -628,6 +683,7 @@ public class Practica1{
 			
 		}while(!fin);
 		
+		//* SE CIERRA EL SCANNER
 		entrada.close();
 		
 		System.out.println("*********************************************");
