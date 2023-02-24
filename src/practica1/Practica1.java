@@ -18,9 +18,9 @@ public class Practica1{
 
 	public static void main(String[] args) {
 		
-		String [] nombres = new String[20];
-		int [] edades = new int[20];
-		String[] localidades = new String[20];
+		String [] nombres = {"LUIS MARTIN","ALBA RUBIO","DAVID LOPEZ","JORGE PEREZ","ALICIA MARTINEZ","PEDRO GONZALEZ","OSCAR CANO","PEPA LOPEZ","CARLOS RUIZ","ALBERTO MAYA","AITOR ALSINA","MARTA BORRAJO","LUIS DIEZ","JORGE MORENO","ANDONI VAZQUEZ","OSCAR COLOMO","RAUL JIMENEZ","PEDRO CAMPOS","VIRGINIA PEREZ","JULIAN MARTIN",};
+		int [] edades = {26,29,42,23,26,35,51,28,64,61,26,31,40,25,42,54,61,28,30,51};
+		String[] localidades = {"NAVALCARNERO","MOSTOLES","ALCORCON","GETAFE","LEGANES","PARLA","ARROYOMOLINOS","COSLADA","POZUELO","BRUNETE","CENICIENTOS","VALMOJADO","CHINCHON","ALGETE","TOLEDO","TORREJON","EL ESCORIAL","BARAJAS","EL ALAMO","SEVILLA LA NUEVA",};
 		
 		int[] busquedaEdad = new int[20];
 		int[] edadesAux = new int[20];
