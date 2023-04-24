@@ -3,8 +3,18 @@ package practica2;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * CLASE PRACTICA EVALUABLE 2.
+ * @author Luis Martin Portillo.
+ * @version 1.1.1
+ */
 public class Practica2 {
 
+	/**
+	 * @author Luis Martin Portillo.
+	 * @param args - args necesario main
+	 * @version 1.1.1
+	 */
 	public static void main(String[] args) {
 
 		boolean fin = false;

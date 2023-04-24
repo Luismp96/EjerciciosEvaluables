@@ -5,9 +5,19 @@ import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * @author Luis Martin Portillo.
+ * @version 1.1.1
+ */
+
 public class Funcionalidades {
 
 	
+	/** 
+	 * METODO QUE MUESTRA MENU
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	public static void mostrarMenu() {
 		
 		System.out.println("*************************************************************");
@@ -22,6 +32,11 @@ public class Funcionalidades {
 		
 	}
 	
+	/** 
+	 * METODO QUE MUESTRA MENU DE CONSULTA
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	*/
 	public static void mostrarMenuConsulta() {
 		
 		System.out.println("********************************************");
@@ -38,6 +53,12 @@ public class Funcionalidades {
 		
 	}
 	
+	/** 
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @return int - DEVUELVE EDAD QUE INTRODUCE USUARIO POR PANTALLA.
+	 * @version 1.1.1
+	 */
 	public static int pedirEdad(Scanner entrada) {
 		int edadAux = 0;
 		boolean edadValida = false;
@@ -65,6 +86,12 @@ public class Funcionalidades {
 		return edadAux;
 	}
 	
+	/** 
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @return String - DEVUELVE EL NOMBRE QUE INTRODUCE USUARIO POR PANTALLA.
+	 * @version 1.1.1
+	 */
 	public static String pedirNombre(Scanner entrada) {
 		String nombreAux = "";
 		
@@ -73,6 +100,13 @@ public class Funcionalidades {
 		
 		return nombreAux;
 	}
+	
+	/** 
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @return String - DEVUELVE EL NOMBRE DE LOCALIDAD QUE INTRODUCE USUARIO POR PANTALLA.
+	 * @version 1.1.1
+	 */
 	
 	public static String pedirNombreLocalidad(Scanner entrada) {
 		String nombreLocAux = "";
@@ -83,6 +117,12 @@ public class Funcionalidades {
 		return nombreLocAux;
 	}
 	
+	/** 
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @return int - DEVUELVE EL NUMERO DE HABITANTES QUE INTRODUCE USUARIO POR PANTALLA.
+	 * @version 1.1.1
+	 */
 	public static int pedirPoblacion(Scanner entrada) {
 		int poblacionAux = 0;
 		boolean poblacionValida = false;
@@ -110,6 +150,12 @@ public class Funcionalidades {
 		return poblacionAux;
 	}
 	
+	/** 
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @return int - DEVUELVE EL COD.POSTAL QUE INTRODUCE USUARIO POR PANTALLA.
+	 * @version 1.1.1
+	 */
 	public static int pedirCodPostal(Scanner entrada) {
 		int codigoAux = 0;
 		boolean codigoValida = false;
@@ -137,6 +183,15 @@ public class Funcionalidades {
 		return codigoAux;
 	}
 	
+	/** 
+	 * @author Luis Martin Portillo.
+	 * @param listaAlcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @param nombre - NOMBRE ALCALDE.
+	 * @param edad - EDAD ALCALDE.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @return ArrayList - DEVUELVE ARRAYLIST DESPUES DEL ALTA.
+	 * @version 1.1.1
+	 */
 	public static ArrayList<Alcalde> altaAlcalde(ArrayList<Alcalde> listaAlcaldes, String nombre, int edad, Scanner entrada){
 		boolean encontradoLocalidad = false;
 		boolean encontradoAlcalde = false;
@@ -163,6 +218,14 @@ public class Funcionalidades {
 		return listaAlcaldes;
 	}
 	
+	/** 
+	 * METODO QUE DEVUELVE TRUE/FALSE EN FUNCION DE SI EXISTE O NO EL NOMBRE EN EL ARRAYLIST DE ENTRADA.
+	 * @author Luis Martin Portillo.
+	 * @param listaAlcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @param nombre - NOMBRE ALCALDE A BUSCAR.
+	 * @return boolean - DEVUELVE TRUE/FALSE EN FUNCION DE SI EXISTE NOMBRE.
+	 * @version 1.1.1
+	 */
 	public static boolean existeAlcalde (ArrayList<Alcalde> listaAlcaldes, String nombre) {
 		boolean encontradoAlcalde = false;
 		
@@ -176,6 +239,15 @@ public class Funcionalidades {
 		return encontradoAlcalde;
 	}
 	
+	/** 
+	 * METODO QUE DEVUELVE TRUE/FALSE EN FUNCION DE SI EXISTE O NO EL NOMBRE DE LA LOCALIDAD EN EL ARRAYLIST DE ENTRADA.
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @param listaAlcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @param nombreLocalidad - NOMBRE LOCALIDAD A BUSCAR.
+	 * @return boolean - DEVUELVE TRUE/FALSE EN FUNCION DE SI EXISTE NOMBRE DE LA LOCALIDAD.
+	 * @version 1.1.1
+	 */
 	public static boolean existeLocalidad(Scanner entrada, ArrayList<Alcalde> listaAlcaldes,String nombreLocalidad) {
 		boolean encontradoLocalidad = false;
 		
@@ -190,6 +262,14 @@ public class Funcionalidades {
 		return encontradoLocalidad;
 	}
 	
+	/** 
+	 * METODO QUE DEVUELVE OBJETO DE LA CLASE LOCALIDAD AL SER DADA DE ALTA.
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @param nombreLocalidad - NOMBRE LOCALIDAD A DAR DE ALTA.
+	 * @return Localidad - DEVUELVE OBJETO DE LA CLASE LOCALIDAD AL SER DADA DE ALTA.
+	 * @version 1.1.1
+	 */
 	public static Localidad altaLocalidad(Scanner entrada, String nombreLocalidad) {
 		Localidad localidad;
 		int poblacion,codPostal;
@@ -201,6 +281,14 @@ public class Funcionalidades {
 		return localidad;
 	}
 	
+	/** 
+	 * METODO QUE DEVUELVE UN ALCALDE BUSCADO.
+	 * @author Luis Martin Portillo.
+	 * @param listaAlcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @param nombre - NOMBRE ALCALDE A BUSCAR.
+	 * @return Alcalde - DEVUELVE OBJETO DE LA CLASE ALCALDE BUSCADO. SI NO EXISTE -> VACIO.
+	 * @version 1.1.1
+	 */	
 	public static Alcalde buscarPorNombreAlcalde (ArrayList<Alcalde> listaAlcaldes, String nombre) {
 		
 		Alcalde salida = null;
@@ -216,6 +304,13 @@ public class Funcionalidades {
 		
 	}
 	
+	/** 
+	 * METODO QUE BUSCA POR NOMBRE INTRODUCIDO POR PANTALLA.
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @param alcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @version 1.1.1
+	 */
 	public static void buscarPorNombreMenu(Scanner entrada, ArrayList<Alcalde> alcaldes) {
 		
 		String nombreAux;
@@ -242,6 +337,13 @@ public class Funcionalidades {
 		};
 	}
 	
+	/** 
+	 * METODO QUE REALIZA SUBMENU CONSULTA.
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @return int - DEVUELVE OPCION DE SUBMENU CONSULTA SELECCIONADO.
+	 * @version 1.1.1
+	 */
 	public static int procesoConsulta(Scanner entrada) {
 		
 		int opcionMenuConsulta = 0;
@@ -271,6 +373,12 @@ public class Funcionalidades {
 		return opcionMenuConsulta;
 	}
 	
+	/** 
+	 * METODO ORDENA ELEMENTOS ARRAYLIST ENTRADA.
+	 * @author Luis Martin Portillo.
+	 * @param listaAlcaldes - ARRAYLIST DE LA CLASE ALCALDE A ORDENAR.
+	 * @version 1.1.1
+	 */
 	public static void ordenarAlcaldesPorEdad (ArrayList<Alcalde> listaAlcaldes) {
 		
 		listaAlcaldes.sort(Comparator.comparing(Alcalde::getEdad));	
@@ -280,6 +388,13 @@ public class Funcionalidades {
 		}
 	}
 	
+	/** 
+	 * METODO QUE REALIZA SUBMENU CONSULTA POR EDAD.
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @param alcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @version 1.1.1
+	 */
 	public static void buscarPorEdadMenu(Scanner entrada, ArrayList<Alcalde> alcaldes) {
 		
 		int edadAux;
@@ -310,6 +425,13 @@ public class Funcionalidades {
 		
 	}
 	
+	/** 
+	 * METODO QUE REALIZA SUBMENU CONSULTA POR LOCALIDAD.
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @param alcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @version 1.1.1
+	 */
 	public static void buscarPorLocalidadMenu(Scanner entrada, ArrayList<Alcalde> alcaldes) {
 		
 	    String localidadAux;
@@ -339,6 +461,13 @@ public class Funcionalidades {
 		
 	}
 	
+	/** 
+	 * METODO QUE DEVUELVE LA MEDIA DE EDAD DEL ARRAYLIST ENTRADA.
+	 * @author Luis Martin Portillo.
+	 * @param alcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @return double - MEDIA ARRAYLIST ENTRADA.
+	 * @version 1.1.1
+	 */
 	public static double calcularMedia(ArrayList<Alcalde> alcaldes) {
 		
 		double cociente =0;
@@ -357,6 +486,12 @@ public class Funcionalidades {
 		return resultado;
 	}
 	
+	/** 
+	 * METODO QUE DEVUELVE TODOS LOS ELEMENTOS DEL ARRAYLIST DE ENTRADA.
+	 * @author Luis Martin Portillo.
+	 * @param alcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @version 1.1.1
+	 */
 	public static void mostrarTodo(ArrayList<Alcalde> alcaldes) {
 		
 		for (Alcalde alcaldeX : alcaldes) {
@@ -371,6 +506,13 @@ public class Funcionalidades {
 		
 	}
 	
+	/** 
+	 * METODO QUE ELIMINA REGISTRO INTRODUCIDO POR PANTALLA DEL ARRAYLIST DE ENTRADA.
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @param alcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @version 1.1.1
+	 */
 	public static void eliminarRegistro(Scanner entrada, ArrayList<Alcalde> alcaldes) {
 		
 		int opcionAux = 0;
@@ -471,6 +613,13 @@ public class Funcionalidades {
 	    
 	}
 	
+	/** 
+	 * METODO QUE MODIFICA REGISTRO INTRODUCIDO POR PANTALLA DEL ARRAYLIST DE ENTRADA.
+	 * @author Luis Martin Portillo.
+	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @param alcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @version 1.1.1
+	 */
 	public static void modificarRegistro(Scanner entrada, ArrayList<Alcalde> alcaldes) {
 		
 		int opcionAux = 0;
@@ -563,6 +712,12 @@ public class Funcionalidades {
 		}
 	}
 	
+	/** 
+	 * METODO QUE MUESTRA TODOS LAS LOCALIDADES DEL ARRAYLIST DE ENTRADA.
+	 * @author Luis Martin Portillo.
+	 * @param alcaldes - ARRAYLIST DE LA CLASE ALCALDE.
+	 * @version 1.1.1
+	 */
 	public static void mostrarLocalidades(ArrayList<Alcalde> alcaldes) {
 		
 		for (Alcalde alcaldeX : alcaldes) {
@@ -571,6 +726,11 @@ public class Funcionalidades {
 		
 	}
 	
+	/** 
+	 * METODO QUE MUESTRA MENSAJE FINAL DEL PROGRAMA.
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	public static void finalizarApp() {
 		
 		System.out.println("*********************************************");

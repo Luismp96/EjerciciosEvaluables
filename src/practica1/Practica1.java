@@ -369,8 +369,6 @@ public class Practica1{
 						
 						localidadAModificar = entrada.nextLine();
 						
-						//*OBTENEMOS POSICION DE LA LOCALIDAD EN EL ARRAY, Y EN CASO DE ENCONTRARSE SE PODRÁ MODIFICAR, SI NO NO.
-						
 						posicionLocalidadAux = Funcionalidades.buscarArrayString(localidadAModificar, localidades);
 						
 						if (posicionLocalidadAux != -1) {
