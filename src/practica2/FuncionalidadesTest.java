@@ -54,8 +54,9 @@ class FuncionalidadesTest {
 		String nombre = "Luis Perez";
 		int edad = 26;
 		
-		ArrayList<Alcalde> resultado = Funcionalidades.altaAlcalde(alcaldes,nombre,edad,entrada);
-		assertNotNull (resultado);
+		boolean resultado = Funcionalidades.altaAlcalde(alcaldes,nombre,edad,entrada);
+		
+		assertTrue (resultado == true);
 	}
 	
 	@Test

@@ -41,7 +41,15 @@ public class Practica2 {
 					nombreAux = Funcionalidades.pedirNombre(entrada);
 					edadAux = Funcionalidades.pedirEdad(entrada);	
 					
-					Funcionalidades.altaAlcalde(alcaldes,nombreAux,edadAux,entrada);
+					if(Funcionalidades.altaAlcalde(alcaldes,nombreAux,edadAux,entrada) == false){
+						System.out.println("**************************************");
+						System.out.println("*     NO SE HA PODIDO DAR DE ALTA.   *");
+						System.out.println("**************************************");
+					}else{
+						System.out.println("***************************************");
+						System.out.println("* ALCALDE DADO DE ALTA CORRECTAMENTE. *");
+						System.out.println("***************************************");
+					};
 					
 					break;
 				case 2:

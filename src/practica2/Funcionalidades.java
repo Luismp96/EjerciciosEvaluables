@@ -192,31 +192,37 @@ public class Funcionalidades {
 	 * @return ArrayList - DEVUELVE ARRAYLIST DESPUES DEL ALTA.
 	 * @version 1.1.1
 	 */
-	public static ArrayList<Alcalde> altaAlcalde(ArrayList<Alcalde> listaAlcaldes, String nombre, int edad, Scanner entrada){
+	public static boolean altaAlcalde(ArrayList<Alcalde> listaAlcaldes, String nombre, int edad, Scanner entrada){
 		
 		boolean encontradoLocalidad = false;
 		boolean encontradoAlcalde = false;
 		Localidad localidad;
 		Alcalde alcaldeNuevo;
 		String nombreLocalidad = "";
+		boolean altaCorrecta = false;
 		
 		encontradoAlcalde = existeAlcalde(listaAlcaldes, nombre);
 		
 		if (!encontradoAlcalde) {
 			nombreLocalidad = pedirNombreLocalidad(entrada);
 			encontradoLocalidad = existeLocalidad(listaAlcaldes,nombreLocalidad);
+			
+			if (!encontradoLocalidad) {
+				
+				localidad = altaLocalidad(entrada,nombreLocalidad);
+				alcaldeNuevo = new Alcalde(nombre, edad, localidad);
+				
+				listaAlcaldes.add(alcaldeNuevo);
+				altaCorrecta = true;
+				
+			}
+		}else {
+			System.out.println("**************************************");
+			System.out.println("* YA ESXISTE ALCALDE CON ESE NOMBRE. *");
+			System.out.println("**************************************");
 		}
 		
-		if (!encontradoLocalidad && !encontradoAlcalde) {
-			
-			localidad = altaLocalidad(entrada,nombreLocalidad);
-			alcaldeNuevo = new Alcalde(nombre, edad, localidad);
-			
-			listaAlcaldes.add(alcaldeNuevo);
-			
-		}
-		
-		return listaAlcaldes;
+		return altaCorrecta;
 	}
 	
 	/** 
