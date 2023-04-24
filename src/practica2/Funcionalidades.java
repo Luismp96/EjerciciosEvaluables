@@ -193,6 +193,7 @@ public class Funcionalidades {
 	 * @version 1.1.1
 	 */
 	public static ArrayList<Alcalde> altaAlcalde(ArrayList<Alcalde> listaAlcaldes, String nombre, int edad, Scanner entrada){
+		
 		boolean encontradoLocalidad = false;
 		boolean encontradoAlcalde = false;
 		Localidad localidad;
@@ -203,7 +204,7 @@ public class Funcionalidades {
 		
 		if (!encontradoAlcalde) {
 			nombreLocalidad = pedirNombreLocalidad(entrada);
-			encontradoLocalidad = existeLocalidad(entrada, listaAlcaldes,nombreLocalidad);
+			encontradoLocalidad = existeLocalidad(listaAlcaldes,nombreLocalidad);
 		}
 		
 		if (!encontradoLocalidad && !encontradoAlcalde) {
@@ -242,13 +243,12 @@ public class Funcionalidades {
 	/** 
 	 * METODO QUE DEVUELVE TRUE/FALSE EN FUNCION DE SI EXISTE O NO EL NOMBRE DE LA LOCALIDAD EN EL ARRAYLIST DE ENTRADA.
 	 * @author Luis Martin Portillo.
-	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
 	 * @param listaAlcaldes - ARRAYLIST DE LA CLASE ALCALDE.
 	 * @param nombreLocalidad - NOMBRE LOCALIDAD A BUSCAR.
 	 * @return boolean - DEVUELVE TRUE/FALSE EN FUNCION DE SI EXISTE NOMBRE DE LA LOCALIDAD.
 	 * @version 1.1.1
 	 */
-	public static boolean existeLocalidad(Scanner entrada, ArrayList<Alcalde> listaAlcaldes,String nombreLocalidad) {
+	public static boolean existeLocalidad(ArrayList<Alcalde> listaAlcaldes,String nombreLocalidad) {
 		boolean encontradoLocalidad = false;
 		
 		for (Alcalde alcalde : listaAlcaldes) {
