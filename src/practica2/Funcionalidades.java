@@ -282,6 +282,7 @@ public class Funcionalidades {
 		
 		poblacion = pedirPoblacion(entrada);
 		codPostal = pedirCodPostal(entrada);
+		
 		localidad = new Localidad(nombreLocalidad, poblacion, codPostal);
 		
 		return localidad;
