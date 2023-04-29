@@ -575,7 +575,7 @@ public class Funcionalidades {
 				};
 				contador++;
 			}
-			
+	
 			if (!registroEncontrado) {
 				System.out.println("******************************************************");
 				System.out.println("*    NO EXISTE REGISTRO CON ESE NOMBRE DE ALCALDE    *");

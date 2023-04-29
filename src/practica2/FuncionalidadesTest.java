@@ -8,10 +8,23 @@ import java.util.Scanner;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author Luis Martin Portillo.
+ * @version 1.1.1
+ */
 class FuncionalidadesTest {
 
+	/** 
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	Scanner entrada = new Scanner(System.in);
 	
+	/** 
+	 * METODO PRUEBA PEDIR EDAD
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testPedirEdad() {
 		
@@ -19,6 +32,11 @@ class FuncionalidadesTest {
 		assertTrue (resultado != 0);
 	}
 	
+	/** 
+	 * METODO PRUEBA PEDIR NOMBRE
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testPedirNombre() {
 		
@@ -26,6 +44,11 @@ class FuncionalidadesTest {
 		assertTrue (resultado != null);
 	}
 	
+	/** 
+	 * METODO PRUEBA PEDIR LOCALIDAD
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testPedirNombreLocalidad() {
 		
@@ -33,6 +56,11 @@ class FuncionalidadesTest {
 		assertTrue (resultado != null);
 	}
 	
+	/** 
+	 * METODO PRUEBA PEDIR POBLACION
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testPedirPoblacion() {
 		
@@ -40,6 +68,11 @@ class FuncionalidadesTest {
 		assertTrue (resultado > 0);
 	}
 	
+	/** 
+	 * METODO PRUEBA PEDIR COD.POSTAL
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testPedirCodigoPostal() {
 		
@@ -47,6 +80,11 @@ class FuncionalidadesTest {
 		assertTrue (resultado > 0);
 	}
 	
+	/** 
+	 * METODO PRUEBA ALTA ALCALDE
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testaltaAlcalde() {
 		
@@ -59,6 +97,11 @@ class FuncionalidadesTest {
 		assertTrue (resultado == true);
 	}
 	
+	/** 
+	 * METODO PRUEBA EXISTE ALCALDE
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testExisteAlcalde() {
 		
@@ -74,6 +117,11 @@ class FuncionalidadesTest {
 		assertTrue (resultado == true);
 	}
 	
+	/** 
+	 * METODO PRUEBA EXISTE LOCALIDAD
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testExisteLocalidad() {
 		
@@ -89,6 +137,11 @@ class FuncionalidadesTest {
 		assertTrue (resultado == true);
 	}
 	
+	/** 
+	 * METODO PRUEBA ALTA LOCALIDAD
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testAltaLocalidad() {
 		
@@ -99,6 +152,11 @@ class FuncionalidadesTest {
 		assertTrue (resultado.getNombre() == localidadAux);
 	}
 
+	/** 
+	 * METODO PRUEBA BUSCAR POR NOMBRE ALCALDE
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testBuscarXNombreAlcalde() {
 		
@@ -113,6 +171,11 @@ class FuncionalidadesTest {
 		
 	}
 	
+	/** 
+	 * METODO PRUEBA CONSULTA
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testProcesoConsulta() {
 		
@@ -121,6 +184,11 @@ class FuncionalidadesTest {
 		assertTrue (resultado !=0);
 	}
 	
+	/** 
+	 * METODO PRUEBA CALCULO MEDIA
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
 	@Test
 	void testCalcularMedia() {
 		ArrayList<Alcalde> alcaldes = new ArrayList<Alcalde>();
