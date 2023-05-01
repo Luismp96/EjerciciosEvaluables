@@ -112,21 +112,20 @@ public class Funcionalidades {
 		Statement sentenciaSQL = statementBD(conexion);
 		//RESULTADO SENTENCIA SQL
 		ResultSet rs  = null;
-		
 		boolean encontrado = false;
 		
 		try {
-			
 			 //ALMACENO EL RESULTADO DE LA SELECT EN UN RESULTSET
 			 rs = sentenciaSQL.executeQuery("SELECT * FROM alcaldes WHERE nombre = '" + nombre +"';");
 		     
 			 //PREGUNTO POR EL PRIMER REGISTRO DEVUELTO
 		     while(rs.next()) {
 		       //SI HAY RESULTADO MUESTRO VALOR Y BOOLEANO ENCONTRADO A TRUE. 
-		        System.out.println(rs.getString(1) + " - " + rs.getString(2)+ " - " + rs.getString(3) + " - " + rs.getString(4)+ " - " + rs.getString(5));
+		        System.out.println(rs.getString(1) + " - " + rs.getString(2)+ " - " + rs.getString(3) + " - " + rs.getString(4)+ 
+		        " - " + rs.getString(5));
+		    
 		        encontrado = true;
 		     }
-		     
 		     
 		} catch (SQLException ex) {
 				ex.printStackTrace();
@@ -157,17 +156,16 @@ public class Funcionalidades {
 		Statement sentenciaSQL = statementBD(conexion);
 		//RESULTADO SENTENCIA SQL.
 		ResultSet rs  = null;
-		
 		boolean encontrado = false;
 		
 		try {
-			
 			//ALMACENO EL RESULTADO DE LA SELECT EN UN RESULTSET
 			 rs = sentenciaSQL.executeQuery("SELECT * FROM alcaldes WHERE localidad = '" + localidad +"';");
 			//PREGUNTO POR EL PRIMER REGISTRO DEVUELTO
 		     while(rs.next()) {
 		    	//SI HAY RESULTADO MUESTRO VALOR Y BOOLEANO ENCONTRADO A TRUE. 
-		        System.out.println(rs.getString(1) + " - " + rs.getString(2)+ " - " + rs.getString(3) + " - " + rs.getString(4)+ " - " + rs.getString(5));
+		        System.out.println(rs.getString(1) + " - " + rs.getString(2)+ " - " + rs.getString(3) + " - " + 
+		    	rs.getString(4)+ " - " + rs.getString(5));
 		        encontrado = true;
 		     }
 		     
