@@ -920,8 +920,7 @@ public class Funcionalidades {
 				System.out.println("*       ¿CUAL ES LA NUEVA EDAD?       *");
 				System.out.println("***************************************");
 				
-				edadAux = entrada.nextInt();
-				entrada.nextLine();
+				edadAux = pedirEdad(entrada);
 				
 				try {
 					//SENTENCIA SQL.
@@ -949,7 +948,7 @@ public class Funcionalidades {
 				System.out.println("*       ¿CUAL ES LA NUEVA LOCALIDAD?       *");
 				System.out.println("********************************************");
 				
-				localidadAux = entrada.nextLine();
+				localidadAux = pedirLocalidad(entrada);
 				
 				try {
 					//SENTENCIA SQL.
@@ -978,8 +977,7 @@ public class Funcionalidades {
 				System.out.println("*       ¿CUAL ES LA NUEVA POBLACION?       *");
 				System.out.println("********************************************");
 				
-				poblacionAux = entrada.nextInt();
-				entrada.nextLine();
+				poblacionAux = pedirPoblacion(entrada);
 				
 				try {
 					//SENTENCIA SQL.
