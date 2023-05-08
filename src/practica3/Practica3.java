@@ -32,7 +32,7 @@ public class Practica3 {
 		//SE MOSTRARA EL MENU HASTA QUE EL USUARIO DECIDA FINALIZAR LA APLICACION.
 		do {
 
-			Funcionalidades.mostrarMenu();
+			Funcionalidades.mostrarMenuGeneral();
 
 			opcionMenu = entrada.nextInt();
 			entrada.nextLine();

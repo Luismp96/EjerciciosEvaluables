@@ -157,5 +157,20 @@ class FuncionalidadesTest {
 		int resultado = Funcionalidades.pedirCodPostal(entrada);
 		assertTrue (resultado > 0);
 	}
+	
+	/** 
+	 * METODO PRUEBA PEDIR COD.POSTAL
+	 * @author Luis Martin Portillo.
+	 * @version 1.1.1
+	 */
+	@Test
+	void testCalcularMedia() {
+		
+		double resultado1 = 45.0;
+		double resultado2 = 46.0;
+
+		assertTrue ((Funcionalidades.pedirCodPostal(entrada) > resultado1 )
+				&& (Funcionalidades.pedirCodPostal(entrada) < resultado2));
+	}
 
 }

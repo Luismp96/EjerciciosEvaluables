@@ -25,7 +25,7 @@ public class Funcionalidades {
 	 * @author Luis Martin Portillo.
 	 * @version 1.1.1
 	 */
-	public static void mostrarMenu() {
+	public static void mostrarMenuGeneral() {
 		
 		System.out.println("*************************************************************");
 		System.out.println("**************************** MENU ***************************");
