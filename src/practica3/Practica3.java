@@ -22,8 +22,10 @@ public class Practica3 {
 
 		boolean fin = false;
 
+		double media = 0;
 		int opcionMenu;
 		int opcionMenuConsulta = 0;
+		ArrayList<Alcalde> listaResultados = new ArrayList<Alcalde>();
 
 		Scanner entrada = new Scanner(System.in);
 
@@ -47,22 +49,53 @@ public class Practica3 {
 			    
 				switch (opcionMenuConsulta) {
 					case 1:	
-						Funcionalidades.buscarPorNombre(entrada);
+						listaResultados = Funcionalidades.buscarPorNombre(entrada);
+						
+						for(Alcalde alcaldeX : listaResultados) {
+							System.out.println(alcaldeX.toString());
+						}
+						
 						break;	
 					case 2:
-						Funcionalidades.buscarPorEdad(entrada);	
+						
+						listaResultados = Funcionalidades.buscarPorEdad(entrada);
+						
+						for(Alcalde alcaldeX : listaResultados) {
+							System.out.println(alcaldeX.toString());
+						}
 						break;
 					case 3:
-						Funcionalidades.buscarPorLocalidad(entrada);
+						
+						listaResultados = Funcionalidades.buscarPorLocalidad(entrada);
+						
+						for(Alcalde alcaldeX : listaResultados) {
+							System.out.println(alcaldeX.toString());
+						}
+						
 						break;
 					case 4:
-					    Funcionalidades.calcularMedia();
+					    media = Funcionalidades.calcularMedia();
+					    
+					    if (media > 0){
+							   System.out.println("********************************************" );
+							   System.out.println("* LA MEDIA DE EDAD ES DE " + media + " AÑOS." );
+							   System.out.println("********************************************" );
+						   }
 						break;
 					case 5:
-						Funcionalidades.ordenarPorEdad();
+						listaResultados = Funcionalidades.ordenarPorEdad();
+						
+						for(Alcalde alcaldeX : listaResultados) {
+							System.out.println(alcaldeX.toString());
+						}
+						
 						break;	
 					case 6:
-					    Funcionalidades.consultarTodo();
+					    listaResultados = Funcionalidades.consultarTodo();
+					    
+					    for(Alcalde alcaldeX : listaResultados) {
+							System.out.println(alcaldeX.toString());
+						}
 						break;
 					case 7:	
 						Funcionalidades.consultarLocalidades();

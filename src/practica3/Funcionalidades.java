@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import practica2.Alcalde;
+import practica3.Alcalde;
 
 /**
  * @author Luis Martin Portillo.
@@ -119,11 +119,7 @@ public class Funcionalidades {
 			 rs = sentenciaSQL.executeQuery("SELECT * FROM alcaldes WHERE nombre = '" + nombre +"';");
 		     
 			 //PREGUNTO POR EL PRIMER REGISTRO DEVUELTO
-		     while(rs.next()) {
-		       //SI HAY RESULTADO MUESTRO VALOR Y BOOLEANO ENCONTRADO A TRUE. 
-		        System.out.println(rs.getString(1) + " - " + rs.getString(2)+ " - " + rs.getString(3) + " - " + rs.getString(4)+ 
-		        " - " + rs.getString(5));
-		    
+		     while(rs.next()) {		    
 		        encontrado = true;
 		     }
 		     
@@ -163,9 +159,6 @@ public class Funcionalidades {
 			 rs = sentenciaSQL.executeQuery("SELECT * FROM alcaldes WHERE localidad = '" + localidad +"';");
 			//PREGUNTO POR EL PRIMER REGISTRO DEVUELTO
 		     while(rs.next()) {
-		    	//SI HAY RESULTADO MUESTRO VALOR Y BOOLEANO ENCONTRADO A TRUE. 
-		        System.out.println(rs.getString(1) + " - " + rs.getString(2)+ " - " + rs.getString(3) + " - " + 
-		    	rs.getString(4)+ " - " + rs.getString(5));
 		        encontrado = true;
 		     }
 		     
@@ -445,9 +438,10 @@ public class Funcionalidades {
 	 * METODO QUE BUSCA POR NOMBRE INTRODUCIDO POR PANTALLA.
 	 * @author Luis Martin Portillo.
 	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @return ArrayList - DEVUELVE LISTA DE ALCALDES QUE HAYA CON EL NOMBRE INTRODUCIDO POR PANTALLA.
 	 * @version 1.1.1
 	 */
-	public static void buscarPorNombre(Scanner entrada) {
+	public static ArrayList<Alcalde> buscarPorNombre(Scanner entrada) {
 		
 		String nombreAux;
 		//CONEXION BBDD.
@@ -456,6 +450,7 @@ public class Funcionalidades {
 		Statement sentenciaSQL = statementBD(conexion);
 		// RESULTADO SENTENCIA SQL.
 		ResultSet rs;
+		ArrayList<Alcalde> salida = new ArrayList<Alcalde>();
 		
 		System.out.println("BUSQUEDA POR NOMBRE DE ALCALDE...");
 		System.out.println("¿QUE ALCALDE QUIERES BUSCAR?");
@@ -472,14 +467,18 @@ public class Funcionalidades {
 		    	 
 		    	 //MOSTRAMOS RESULTADOS EN CASO DE QUE HAYA
 		    	 while(rs.next()) {
-		    		 System.out.println("**********************************************");
-		    		 System.out.println("* NOMBRE ALCALDE: " + rs.getString(2));
-		    		 System.out.println("* EDAD ALCALDE: " + rs.getInt(3));
-		    		 System.out.println("* LOCALIDAD ALCALDE: " + rs.getString(4));
-		    		 System.out.println("* POBLACION: " + rs.getInt(5));
-		    		 System.out.println("* COD.POSTAL: " + rs.getInt(6));
-		    		 System.out.println("**********************************************");
+		    		 Alcalde alcaldeEncontrado = new Alcalde();
+		    		 
+		    		 alcaldeEncontrado.setIdAlcalde(rs.getInt(1));
+		    		 alcaldeEncontrado.setNombre(rs.getString(2));
+		    		 alcaldeEncontrado.setEdad(rs.getInt(3));
+		    		 alcaldeEncontrado.setLocalicad(rs.getString(4));
+		    		 alcaldeEncontrado.setPoblacion(rs.getInt(5));
+		    		 alcaldeEncontrado.setCodPostal(rs.getInt(6));
+		    		 
+		    		 salida.add(alcaldeEncontrado);
 		    	 }
+		   
 		     }catch(SQLException ex) {
 				ex.printStackTrace();
 				System.out.println("Error");
@@ -496,18 +495,23 @@ public class Funcionalidades {
 			System.out.println("*        ALCALDE NO ENCONTRADO          *");
 			System.out.println("*****************************************");
 		};
+		
+		return salida;
 	}
 	
 	/** 
 	 * METODO QUE BUSCA POR EDAD INTRODUCIDA POR PANTALLA.
 	 * @author Luis Martin Portillo.
 	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @return ArrayList - DEVUELVE LISTA DE ALCALDES QUE HAYA CON LA EDAD INTRODUCIDA POR PANTALLA.
 	 * @version 1.1.1
 	 */
-	public static void buscarPorEdad(Scanner entrada) {
+	public static ArrayList<Alcalde> buscarPorEdad(Scanner entrada) {
 		
 		int edadAux;
 		int contador = 0;
+		
+		ArrayList<Alcalde> salida = new ArrayList<Alcalde>();
 		
 		//CONEXION BBDD.
 		Connection conexion= conexionBD();
@@ -529,13 +533,18 @@ public class Funcionalidades {
 		   
 		   //MOSTRAMOS LOS RESULTADOS SI LOS HAY.
 		   while(rs.next()) {
-			   System.out.println("**********************************************");
-			   System.out.println("* NOMBRE ALCALDE: " + rs.getString(2));
-			   System.out.println("* EDAD ALCALDE: " + rs.getInt(3));
-			   System.out.println("* LOCALIDAD ALCALDE: " + rs.getString(4));
-			   System.out.println("* POBLACION: " + rs.getInt(5));
-			   System.out.println("* COD.POSTAL: " + rs.getInt(6));
-			   System.out.println("**********************************************");
+			   
+			   Alcalde alcaldeEncontrado = new Alcalde();
+			   
+			   alcaldeEncontrado.setIdAlcalde(rs.getInt(1));
+	    	   alcaldeEncontrado.setNombre(rs.getString(2));
+	    	   alcaldeEncontrado.setEdad(rs.getInt(3));
+	           alcaldeEncontrado.setLocalicad(rs.getString(4));
+	           alcaldeEncontrado.setPoblacion(rs.getInt(5));
+	           alcaldeEncontrado.setCodPostal(rs.getInt(6));
+	    		 
+	    	   salida.add(alcaldeEncontrado);
+			   
 			   contador ++;
 		   }
 		   
@@ -558,18 +567,22 @@ public class Funcionalidades {
 			  }
 		  }
 
+	    return salida;
 	}
 	
 	/** 
 	 * METODO QUE BUSCA POR LOCALIDAD INTRODUCIDA POR PANTALLA.
 	 * @author Luis Martin Portillo.
 	 * @param entrada - CLASE SCANNER PARA LEER DATOS POR PANTALLA.
+	 * @return ArrayList - DEVUELVE LISTA DE ALCALDES QUE HAYA CON EL NOMBRE DE LOCALIDAD INTRODUCIDA POR PANTALLA.
 	 * @version 1.1.1
 	 */
-	public static void buscarPorLocalidad(Scanner entrada) {
+	public static ArrayList<Alcalde> buscarPorLocalidad(Scanner entrada) {
 		
 		String localidadAux;
 		int contador = 0;
+		
+		ArrayList<Alcalde> salida = new ArrayList<Alcalde>();
 	
 		//CONEXION BBDD.
 		Connection conexion= conexionBD();
@@ -590,13 +603,17 @@ public class Funcionalidades {
 		   
 		   //MOSTRAMOS RESULTADOS SI LOS HAY.
 		   while(rs.next()) {
-			   System.out.println("**********************************************");
-			   System.out.println("* NOMBRE ALCALDE: " + rs.getString(2));
-			   System.out.println("* EDAD ALCALDE: " + rs.getInt(3));
-			   System.out.println("* LOCALIDAD ALCALDE: " + rs.getString(4));
-			   System.out.println("* POBLACION: " + rs.getInt(5));
-			   System.out.println("* COD.POSTAL: " + rs.getInt(6));
-			   System.out.println("**********************************************");
+			   Alcalde alcaldeEncontrado = new Alcalde();
+			   
+			   alcaldeEncontrado.setIdAlcalde(rs.getInt(1));
+	    	   alcaldeEncontrado.setNombre(rs.getString(2));
+	    	   alcaldeEncontrado.setEdad(rs.getInt(3));
+	           alcaldeEncontrado.setLocalicad(rs.getString(4));
+	           alcaldeEncontrado.setPoblacion(rs.getInt(5));
+	           alcaldeEncontrado.setCodPostal(rs.getInt(6));
+	    		 
+	    	   salida.add(alcaldeEncontrado);
+			   
 			   contador ++;
 		   }
 		   
@@ -618,15 +635,18 @@ public class Funcionalidades {
 				 e.printStackTrace();
 			  }
 		  }
+	    
+	    return salida;
 
 	}
 	
 	/** 
 	 * METODO QUE CALCULA LA MEDIA DE EDAD DE LOS ALCALDES.
 	 * @author Luis Martin Portillo.
+	 * @return double - DEVUELVE LA MEDIA DE EDAD DE LOS ALCALDES.
 	 * @version 1.1.1
 	 */
-	public static void calcularMedia() {
+	public static double calcularMedia() {
 		//CONEXION BBDD.
 		Connection conexion= conexionBD();
 		//SENTENCIA SQL.
@@ -661,10 +681,6 @@ public class Funcionalidades {
 				   System.out.println("*****************************************");
 				   System.out.println("*         NO EXISTEN ALCALDES           *");
 				   System.out.println("*****************************************");
-			   }else {
-				   System.out.println("********************************************" );
-				   System.out.println("* LA MEDIA DE EDAD ES DE " + mediaRedondeada + " AÑOS." );
-				   System.out.println("********************************************" );
 			   }
 			   
 		}catch(SQLException ex) {
@@ -679,14 +695,17 @@ public class Funcionalidades {
 			    e.printStackTrace();
 		    }
 	    }
+		
+		return mediaRedondeada;
 	}
 	
 	/** 
 	 * METODO QUE CONSULTA TODO EL CONTENIDO DE LA TABLA DE ALCALDES.
 	 * @author Luis Martin Portillo.
+	 * @return ArrayList - DEVUELVE LISTA DE TODOS LOS ALCALDES QUE HAYA.
 	 * @version 1.1.1
 	 */
-	public static void consultarTodo() {
+	public static ArrayList<Alcalde> consultarTodo() {
 		
 		//CONEXION BBDD.
 		Connection conexion= conexionBD();
@@ -694,6 +713,8 @@ public class Funcionalidades {
 		Statement sentenciaSQL = statementBD(conexion);
 		//RESULTADO SENTENCIA SQL.
 		ResultSet rs;
+		
+		ArrayList<Alcalde> salida = new ArrayList<Alcalde>();
 		
 		int contador = 0;
 		
@@ -704,13 +725,17 @@ public class Funcionalidades {
 			   
 			   //MOSTRAMOS LOS RESULTADOS SI LOS HAY.
 			   while(rs.next()) {
-				   System.out.println("**********************************************");
-				   System.out.println("* NOMBRE ALCALDE: " + rs.getString(2));
-				   System.out.println("* EDAD ALCALDE: " + rs.getInt(3));
-				   System.out.println("* LOCALIDAD ALCALDE: " + rs.getString(4));
-				   System.out.println("* POBLACION: " + rs.getInt(5));
-				   System.out.println("* COD.POSTAL: " + rs.getInt(6));
-				   System.out.println("**********************************************");
+				   Alcalde alcaldeEncontrado = new Alcalde();
+				   
+				   alcaldeEncontrado.setIdAlcalde(rs.getInt(1));
+		    	   alcaldeEncontrado.setNombre(rs.getString(2));
+		    	   alcaldeEncontrado.setEdad(rs.getInt(3));
+		           alcaldeEncontrado.setLocalicad(rs.getString(4));
+		           alcaldeEncontrado.setPoblacion(rs.getInt(5));
+		           alcaldeEncontrado.setCodPostal(rs.getInt(6));
+		    		 
+		    	   salida.add(alcaldeEncontrado);
+				   
 				   contador ++;
 			   }
 			   
@@ -736,14 +761,17 @@ public class Funcionalidades {
 			    e.printStackTrace();
 		    }
 	    }
+		
+		return salida;
 	}
 	
 	/** 
 	 * METODO QUE ORDENA POR EDAD LA TABLA DE ALCALDES.
 	 * @author Luis Martin Portillo.
+	 * @return ArrayList - DEVUELVE LISTA DE ALCALDES QUE HAYA DE MENOR A MAYOR EN EDAD.
 	 * @version 1.1.1
 	 */
-	public static void ordenarPorEdad() {
+	public static ArrayList<Alcalde> ordenarPorEdad() {
 		
 		//CONEXION BBDD.
 		Connection conexion= conexionBD();
@@ -751,6 +779,8 @@ public class Funcionalidades {
 		Statement sentenciaSQL = statementBD(conexion);
 		//RESULTADO SENTENCIA SQL
 		ResultSet rs;
+		
+		ArrayList<Alcalde> salida = new ArrayList<Alcalde>();
 		
 		int contador = 0;
 		
@@ -760,13 +790,17 @@ public class Funcionalidades {
 			   rs = sentenciaSQL.executeQuery(sentencia);
 			   //MOSTRAMOS RESULTADO SI HAY DATOS DEVUELTOS.
 			   while(rs.next()) {
-				   System.out.println("**********************************************");
-				   System.out.println("* NOMBRE ALCALDE: " + rs.getString(2));
-				   System.out.println("* EDAD ALCALDE: " + rs.getInt(3));
-				   System.out.println("* LOCALIDAD ALCALDE: " + rs.getString(4));
-				   System.out.println("* POBLACION: " + rs.getInt(5));
-				   System.out.println("* COD.POSTAL: " + rs.getInt(6));
-				   System.out.println("**********************************************");
+				   Alcalde alcaldeEncontrado = new Alcalde();
+				   
+				   alcaldeEncontrado.setIdAlcalde(rs.getInt(1));
+		    	   alcaldeEncontrado.setNombre(rs.getString(2));
+		    	   alcaldeEncontrado.setEdad(rs.getInt(3));
+		           alcaldeEncontrado.setLocalicad(rs.getString(4));
+		           alcaldeEncontrado.setPoblacion(rs.getInt(5));
+		           alcaldeEncontrado.setCodPostal(rs.getInt(6));
+		    		 
+		    	   salida.add(alcaldeEncontrado);
+				   
 				   contador ++;
 			   }
 			   
@@ -792,6 +826,8 @@ public class Funcionalidades {
 			    e.printStackTrace();
 		    }
 	    }
+		
+		return salida;
 	}	
 	
 	/** 
